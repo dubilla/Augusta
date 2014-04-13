@@ -1,4 +1,6 @@
 Augusta::Application.routes.draw do
+  resources :players
+
   resources :teams
 
   devise_for :users
