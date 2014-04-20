@@ -1,0 +1,9 @@
+p#notice
+  = notice
+
+h2 = @team.user.email
+- @team.players.each do |player|
+  ul
+    li = player.first_name + " " + player.last_name
+
+= link_to 'Back', teams_path
