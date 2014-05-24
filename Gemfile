@@ -25,7 +25,11 @@ gem 'devise'
 gem 'rake', '~> 10.3.0'
 gem 'httparty'
 gem 'slim-rails'
-gem 'rubocop', require: false
+
+group :development do
+  gem 'rubocop', require: false
+  gem "rails_best_practices", require: false
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
