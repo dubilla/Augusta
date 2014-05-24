@@ -29,6 +29,9 @@ gem 'slim-rails'
 group :development do
   gem 'rubocop', require: false
   gem "rails_best_practices", require: false
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 # To use ActiveModel has_secure_password
