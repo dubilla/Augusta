@@ -28,6 +28,7 @@ gem 'httparty'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'neat'
+gem 'bitters'
 
 group :development do
   gem 'rubocop', require: false
