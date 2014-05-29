@@ -27,6 +27,7 @@ gem 'rake', '~> 10.3.0'
 gem 'httparty'
 gem 'slim-rails'
 gem 'bourbon'
+gem 'neat'
 
 group :development do
   gem 'rubocop', require: false
