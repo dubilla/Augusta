@@ -215,6 +215,10 @@ header.navigation {
     }
   }
 
+  span {
+    color: $navigation-color-hover;
+  }
+
   .search-bar {
     $search-bar-border-color: $base-border-color;
     $search-bar-border: 1px solid $search-bar-border-color;
