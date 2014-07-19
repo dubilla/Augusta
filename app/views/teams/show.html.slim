@@ -2,8 +2,8 @@ p#notice
   = notice
 
 h2 = @team.user.email
-- @team.players.each do |player|
+- @team.rosters.collect(&:league_tournament).collect(&:league).each do |league|
   ul
-    li = player.first_name + " " + player.last_name
+    li = link_to league.name, league_path(league)
 
 = link_to 'Back', teams_path
