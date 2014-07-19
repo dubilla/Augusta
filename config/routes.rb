@@ -4,7 +4,9 @@ Augusta::Application.routes.draw do
   resources :teams
 
   resources :leagues do
-    resources :league_tournaments, path: "tournaments"
+    resources :league_tournaments, path: "tournaments" do
+      resources :leaderboards, path: "leaderboard"
+    end
   end
 
   devise_for :users

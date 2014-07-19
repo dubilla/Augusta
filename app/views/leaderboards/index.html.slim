@@ -1,0 +1,9 @@
+p#notice
+  = notice
+
+h2 Player Leaders
+table
+  - @player_leaders.each do |leader|
+    tr
+      td = leader["athlete"]["displayName"]
+      td = leader["score"]
