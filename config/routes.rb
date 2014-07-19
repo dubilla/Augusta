@@ -3,6 +3,8 @@ Augusta::Application.routes.draw do
 
   resources :teams
 
+  resources :leagues
+
   devise_for :users
 
   root to: "home#index"

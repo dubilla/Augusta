@@ -1,0 +1,9 @@
+p#notice
+  = notice
+
+h2 = @league.name
+- @league.tournaments.each do |tournament|
+  ul
+    li = tournament.name
+
+= link_to 'Back', leagues_path
