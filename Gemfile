@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'rails', '4.0.3'
 
 # Bundle edge Rails instead:
@@ -37,6 +39,8 @@ group :development do
   gem 'pry-remote'
   gem 'pry-nav'
 end
+
+gem 'rails_12factor', group: :production
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
