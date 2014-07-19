@@ -4,7 +4,6 @@ p#notice
 h2 = @league_tournament.league.name
 h3 = @league_tournament.tournament.name
 - @league_tournament.rosters.each do |roster|
-  - binding.pry
   h4 = roster.team.user.email
   table
     - roster.players.each do |player|
