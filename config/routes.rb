@@ -3,7 +3,9 @@ Augusta::Application.routes.draw do
 
   resources :teams
 
-  resources :leagues
+  resources :leagues do
+    resources :league_tournaments, path: "tournaments"
+  end
 
   devise_for :users
 

@@ -4,4 +4,8 @@ class Player < ActiveRecord::Base
 
   validates :external_id, uniqueness: true
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 end
