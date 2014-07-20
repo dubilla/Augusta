@@ -6,12 +6,12 @@ table
   - @player_leaders.each do |leader|
     tr
       td = leader.name
-      td = leader.roster.team.user.email
+      td = leader.roster.team.user.name
       td = leader.score
 
 h2 Tournament Leaders
 table
   - @team_leaders.each do |roster|
     tr
-      td = roster.team.user.email
+      td = roster.team.user.name
       td = roster.score
