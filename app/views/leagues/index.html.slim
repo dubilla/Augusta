@@ -1,0 +1,8 @@
+p#notice
+  = notice
+
+h2 Leagues
+table
+  - @leagues.each do |league|
+    tr
+      td = link_to league.name, league_path(league)
