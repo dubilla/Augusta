@@ -6,19 +6,7 @@ header.navigation
     .nav
       ul#navigation-menu
         li.nav-link
-          a href="javascript:void(0)" Products
-        li.nav-link
-          a href="javascript:void(0)" About Us
-        li.nav-link
-          a href="javascript:void(0)" Contact
-        li.nav-link
-          a href="javascript:void(0)" More
-        li.nav-link.more
-          a href="javascript:void(0)" About Us
-          ul.submenu
-            li
-              a href="javascript:void(0)" Submenu Item
-              a href="javascript:void(0)" Another Item
+          a href= leagues_path Leagues
     .navigation-tools
       - if user_signed_in?
         span = current_user.email
