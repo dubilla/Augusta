@@ -6,4 +6,8 @@ class LeagueTournament < ActiveRecord::Base
 
   delegate :external_id, to: :tournament
 
+  def roster_players
+    rosters.collect(&:roster_players).flatten
+  end
+
 end

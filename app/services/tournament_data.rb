@@ -8,6 +8,14 @@ class TournamentData
     @apiKey = 'dv58z289n3pf5yw4gxrpzrwq'
   end
 
+  def athletes
+    event["competitors"]
+  end
+
+  def event
+    response["sports"].first["leagues"].first["events"].first["competitions"].first
+  end
+
   def response
     HTTParty.get(url)
   end
