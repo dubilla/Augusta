@@ -1,11 +1,12 @@
 class TournamentData
 
-  def initialize id
+  def initialize id, completed
     @host = 'http://api.espn.com/'
     @version = 'v1/'
     @tournament_path = 'sports/golf/pga/events/'
     @id = id
     @apiKey = 'dv58z289n3pf5yw4gxrpzrwq'
+    @completed = completed
   end
 
   def athletes
@@ -17,7 +18,7 @@ class TournamentData
   end
 
   def response
-    Rails.cache.fetch("tournament/#{@id}", expires_in: 3.minutes) do
+    Rails.cache.fetch("tournament/#{@id}", expires_in: expiration_time) do
       HTTParty.get(url).to_a.flatten[1]
     end
   end
@@ -26,6 +27,14 @@ class TournamentData
 
   def url
     @url ||= [@host, @version, @tournament_path, @id, '?apikey=', @apiKey].join
+  end
+
+  def expiration_time
+    if @completed
+      7.days
+    else
+      3.minutes
+    end
   end
 
 end

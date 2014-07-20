@@ -18,7 +18,7 @@ class RosterPlayer < ActiveRecord::Base
   private
 
   def tournament_golfers
-    TournamentData.new(league_tournament.external_id).athletes
+    TournamentData.new(league_tournament.external_id, league_tournament.completed).athletes
   end
 
 end
