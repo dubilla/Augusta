@@ -17,7 +17,7 @@ class TournamentData
   end
 
   def response
-    HTTParty.get(url)
+    JSON.parse(APICache.get(url))
   end
 
   private
