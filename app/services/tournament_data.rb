@@ -13,11 +13,13 @@ class TournamentData
   end
 
   def event
-    response["sports"].first["leagues"].first["events"].first["competitions"].first
+    response["leagues"].first["events"].first["competitions"].first
   end
 
   def response
-    JSON.parse(APICache.get(url))
+    Rails.cache.fetch("tournament/#{@id}", expires_in: 3.minutes) do
+      HTTParty.get(url).to_a.flatten[1]
+    end
   end
 
   private
