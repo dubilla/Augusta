@@ -7,3 +7,4 @@ table
     tr
       td = link_to lt.tournament.name, league_league_tournament_path(@league, lt)
       td = lt.start_date
+      td = link_to "Leaderboard", league_league_tournament_leaderboards_path(@league, lt)
