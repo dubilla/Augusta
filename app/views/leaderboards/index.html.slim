@@ -8,3 +8,10 @@ table
       td = leader.name
       td = leader.roster.team.user.email
       td = leader.score
+
+h2 Tournament Leaders
+table
+  - @team_leaders.each do |roster|
+    tr
+      td = roster.team.user.email
+      td = roster.score
