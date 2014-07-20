@@ -2,8 +2,10 @@ p#notice
   = notice
 
 h2 = @league.name
-- @league.league_tournaments.each do |lt|
-  ul
-    li = link_to lt.tournament.name, league_league_tournament_path(@league, lt)
+table
+  - @league.league_tournaments.sort_by{|t| t.start_date}.each do |lt|
+    tr
+      td = link_to lt.tournament.name, league_league_tournament_path(@league, lt)
+      td = lt.start_date
 
 = link_to 'Back', leagues_path
