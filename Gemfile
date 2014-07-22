@@ -32,8 +32,6 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 gem 'dalli'
-gem 'api_cache'
-gem 'moneta'
 
 group :development do
   gem 'rubocop', require: false
