@@ -1,9 +1,15 @@
 p#notice
   = notice
 
-h2 = @team.user.email
-- @team.rosters.collect(&:league_tournament).collect(&:league).each do |league|
-  ul
-    li = link_to league.name, league_path(league)
+h2 = @team.user.name
+h4 of #{@team.league.name}
+
+ul
+	li
+		.label Team Wins
+		.value -
+	li
+		.label Ind. Wins
+		.value -
 
 = link_to 'Back', teams_path
