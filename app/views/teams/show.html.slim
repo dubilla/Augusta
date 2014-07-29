@@ -10,6 +10,6 @@ ul
 		.value = @team.rosters.where(winner: true).count
 	li
 		.label Ind. Wins
-		.value -
+		.value = @team.rosters.collect(&:roster_players).flatten.select(&:winner).count
 
 = link_to 'Back', teams_path
