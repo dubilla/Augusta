@@ -12,4 +12,4 @@ ul
 		.label Ind. Wins
 		.value = @team.rosters.collect(&:roster_players).flatten.select(&:winner).count
 
-= link_to 'Back', teams_path
+= link_to 'Back', league_path(@team.league)

@@ -1,9 +1,8 @@
 Augusta::Application.routes.draw do
   resources :players
 
-  resources :teams
-
   resources :leagues do
+    resources :teams
     resources :league_tournaments, path: "tournaments" do
       resources :leaderboards, path: "leaderboard"
     end

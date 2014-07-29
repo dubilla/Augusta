@@ -5,7 +5,7 @@ h2 Teams
 table
   - @league.teams.each do |t|
     tr
-      td = t.user.name
+      td = link_to t.user.name, league_team_path(@league, t)
 
 h2 = @league.name
 table
