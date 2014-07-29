@@ -7,7 +7,7 @@ h4 of #{@team.league.name}
 ul
 	li
 		.label Team Wins
-		.value -
+		.value = @team.rosters.where(winner: true).count
 	li
 		.label Ind. Wins
 		.value -
