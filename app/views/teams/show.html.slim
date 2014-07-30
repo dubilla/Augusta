@@ -5,11 +5,11 @@ h2 = @team.user.name
 h4 of #{@team.league.name}
 
 ul
-	li
-		.label Team Wins
-		.value = @team.rosters.where(winner: true).count
-	li
-		.label Ind. Wins
-		.value = @team.rosters.collect(&:roster_players).flatten.select(&:winner).count
+  li
+    .label Team Wins
+    .value = @team.team_wins
+  li
+    .label Ind. Wins
+    .value = @team.individual_wins
 
 = link_to 'Back', league_path(@team.league)
