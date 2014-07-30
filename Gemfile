@@ -32,6 +32,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 gem 'dalli'
+gem 'draper', '~> 1.3'
 
 group :development do
   gem 'rubocop', require: false
