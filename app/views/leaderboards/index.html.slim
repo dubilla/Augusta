@@ -1,17 +1,18 @@
 p#notice
   = notice
 
-h2 Tournament Leaders
-table
-  - @team_leaders.each do |roster|
-    tr
-      td = roster.team.user.name
-      td = roster.score
+.inner-container(ng-app="leaderboard")
+  h2 Tournament Leaders
+  table
+    - @team_leaders.each do |roster|
+      tr
+        td = roster.team.user.name
+        td = roster.score
 
-h2 Player Leaders
-table
-  - @player_leaders.each do |leader|
-    tr
-      td = leader.name
-      td = leader.roster.team.user.name
-      td = leader.score
+  h2 Player Leaders
+  table(player-leaders="true")
+    - @player_leaders.each do |leader|
+      tr
+        td = leader.name
+        td = leader.roster.team.user.name
+        td = leader.score
