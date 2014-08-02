@@ -10,9 +10,11 @@ p#notice
         td = roster.score
 
   h2 Player Leaders
-  table(player-leaders="true")
-    - @player_leaders.each do |leader|
-      tr
-        td = leader.name
-        td = leader.roster.team.user.name
-        td = leader.score
+  table(player-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
+    tr(ng-repeat="leader in playerLeaders")
+      td
+        | {{leader.name}}
+      td
+        | {{leader.user_name}}
+      td
+        | {{leader.score}}
