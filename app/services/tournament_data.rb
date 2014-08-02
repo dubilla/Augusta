@@ -33,7 +33,7 @@ class TournamentData
     if @completed
       7.days
     else
-      3.minutes
+      1.minute
     end
   end
 
