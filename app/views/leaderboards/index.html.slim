@@ -3,18 +3,19 @@ p#notice
 
 .inner-container(ng-app="leaderboard")
   h2 Tournament Leaders
-  table
-    - @team_leaders.each do |roster|
-      tr
-        td = roster.team.user.name
-        td = roster.score
+  table(team-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
+    tr(ng-repeat="team in teamLeaders")
+      td
+        | {{team.name}}
+      td
+        | {{team.score}}
 
   h2 Player Leaders
   table(player-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
-    tr(ng-repeat="leader in playerLeaders")
+    tr(ng-repeat="player in playerLeaders")
       td
-        | {{leader.name}}
+        | {{player.name}}
       td
-        | {{leader.user_name}}
+        | {{player.user_name}}
       td
-        | {{leader.score}}
+        | {{player.score}}
