@@ -1,0 +1,13 @@
+input[type="submit"] {
+  @include button(simple, desaturate($base-accent-color, 10));
+  margin-right: 0.5em;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: .3em;
+  outline: none;
+
+  @include media($medium-screen) {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
