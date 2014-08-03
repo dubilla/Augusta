@@ -1,5 +1,5 @@
 h2 Leagues
-table
+table.table-minimal
   - @leagues.each do |league|
     tr
       td = link_to league.name, league_path(league)

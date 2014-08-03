@@ -2,7 +2,7 @@ h2 = @league_tournament.league.name
 h3 = @league_tournament.tournament.name
 - @league_tournament.rosters.each do |roster|
   h4 = roster.team.user.name
-  table
+  table.table-minimal
     - roster.players.each do |player|
       tr
         td = player.name

@@ -1,6 +1,6 @@
 .inner-container(ng-app="leaderboard")
   h2 Tournament Leaders
-  table(team-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
+  table.table-minimal(team-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
     tr(ng-repeat="team in teamLeaders")
       td
         | {{team.name}}
@@ -8,7 +8,7 @@
         | {{team.score}}
 
   h2 Player Leaders
-  table(player-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
+  table.table-minimal(player-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
     tr(ng-repeat="player in playerLeaders")
       td
         | {{player.name}}
