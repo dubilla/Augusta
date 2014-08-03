@@ -34,6 +34,7 @@ gem 'neat'
 gem 'bitters'
 gem 'dalli'
 gem 'draper', '~> 1.3'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'rubocop', require: false
