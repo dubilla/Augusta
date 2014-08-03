@@ -10,8 +10,9 @@ html
     = render 'layouts/header'
 
     .outer-container
-
       .container
+        div#notice
+          = notice
 
         == yield
 
