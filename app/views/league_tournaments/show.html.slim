@@ -1,3 +1,6 @@
+.breadcrumb
+  = link_to @league_tournament.league.name, league_path(@league_tournament.league)
+
 h2 = @league_tournament.tournament.name
 - @league_tournament.rosters.each do |roster|
   h3 = roster.team.user.name
