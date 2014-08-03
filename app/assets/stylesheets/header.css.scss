@@ -227,6 +227,17 @@ header.navigation {
     }
   }
 
+  .signed-in-wrapper {
+    margin-top: 16px;
+    .text {
+      margin: 0 4px;
+    }
+    .sign-out {
+      font-weight: 400;
+      color: $navigation-color;
+    }
+  }
+
   span {
     color: $navigation-color-hover;
   }
