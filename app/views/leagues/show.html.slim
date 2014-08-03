@@ -1,10 +1,11 @@
-h2 Teams
+h2 = @league.name
+h3 Teams
 table.table-minimal
   - @league.teams.each do |t|
     tr
       td = link_to t.user.name, league_team_path(@league, t)
 
-h2 = @league.name
+h3 Tournaments
 table.table-minimal
   - @league.league_tournaments.sort_by{|t| t.start_date}.each do |lt|
     tr
