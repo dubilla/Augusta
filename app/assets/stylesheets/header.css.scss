@@ -193,9 +193,21 @@ header.navigation {
     }
   }
 
+  .sign-in-wrapper {
+    float: right;
+    margin-top: 16px;
+    .text {
+      margin: 0 4px;
+    }
+    .sign-in {
+      font-weight: 400;
+      color: $navigation-color;
+    }
+  }
+
   a.sign-up {
     margin-top: 13px;
-    float: right;
+    float: left;
     @include transition (all 0.2s ease-in-out);
     display: inline;
     background: $navigation-nav-button-background;
