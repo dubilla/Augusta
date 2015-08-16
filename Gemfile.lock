@@ -208,3 +208,6 @@ DEPENDENCIES
   slim-rails
   sprockets (<= 2.11.0)
   uglifier (>= 1.0.3)
+
+BUNDLED WITH
+   1.10.4
