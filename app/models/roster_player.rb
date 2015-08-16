@@ -11,6 +11,10 @@ class RosterPlayer < ActiveRecord::Base
     tournament_athlete["score"].to_i
   end
 
+  def status
+    tournament_athlete["linescores"].last["thru"]
+  end
+
   def tournament_athlete
     tournament_golfers.detect{ |g| g["athlete"]["id"] == external_id }
   end

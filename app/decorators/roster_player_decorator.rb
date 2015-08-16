@@ -7,7 +7,8 @@ class RosterPlayerDecorator < Draper::Decorator
       id: self.id,
       name: self.name,
       user_name: self.roster.team.user.name,
-      score: self.score
+      score: self.score,
+      status: self.status
     }
   end
 
