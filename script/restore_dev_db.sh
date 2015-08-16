@@ -4,7 +4,7 @@
 set -e
 
 echo 'Downloading dump file from production'
-curl -o latest.dump `heroku pgbackups:url -a augustageorgia`
+curl -o latest.dump `heroku pg:backups public-url -a augustageorgia`
 
 echo 'Dropping and recreating local DB schema'
 bundle exec rake db:drop db:create
