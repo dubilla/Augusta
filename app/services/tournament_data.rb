@@ -13,6 +13,10 @@ class TournamentData
     event["competitors"]
   end
 
+  def round
+    event["period"]
+  end
+
   def event
     response["sports"].first["leagues"].first["events"].first["competitions"].first
   end

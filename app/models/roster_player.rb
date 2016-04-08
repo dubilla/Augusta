@@ -12,7 +12,7 @@ class RosterPlayer < ActiveRecord::Base
   end
 
   def status
-    tournament_athlete["linescores"].last["thru"]
+    tournament_athlete["linescores"][tournament.round - 1]["thru"]
   end
 
   def tournament_athlete
@@ -22,7 +22,10 @@ class RosterPlayer < ActiveRecord::Base
   private
 
   def tournament_golfers
-    TournamentData.new(league_tournament.external_id, league_tournament.completed).athletes
+    tournament.athletes
   end
 
+  def tournament
+    @tournament ||= TournamentData.new(league_tournament.external_id, league_tournament.completed)
+  end
 end
