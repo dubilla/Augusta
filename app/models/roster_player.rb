@@ -12,7 +12,11 @@ class RosterPlayer < ActiveRecord::Base
   end
 
   def status
-    tournament_athlete["linescores"][tournament.round - 1]["thru"]
+    if linescores.present? && tournament.round.present? && linescores[tournament.round - 1]
+      linescores[tournament.round - 1]["thru"]
+    else
+      'cut'
+    end
   end
 
   def tournament_athlete
@@ -20,6 +24,10 @@ class RosterPlayer < ActiveRecord::Base
   end
 
   private
+
+  def linescores
+    tournament_athlete["linescores"]
+  end
 
   def tournament_golfers
     tournament.athletes
