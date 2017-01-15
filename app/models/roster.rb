@@ -1,5 +1,7 @@
 class Roster < ActiveRecord::Base
 
+  has_paper_trail
+
   has_many :roster_players
   has_many :players, through: :roster_players
   belongs_to :team

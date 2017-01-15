@@ -1,5 +1,7 @@
 class Player < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :team, inverse_of: :players
 
   validates :external_id, uniqueness: true

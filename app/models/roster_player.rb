@@ -1,5 +1,7 @@
 class RosterPlayer < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :roster
   belongs_to :player
 

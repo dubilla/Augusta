@@ -1,5 +1,7 @@
 class LeagueTournament < ActiveRecord::Base
 
+  has_paper_trail
+
   belongs_to :league
   belongs_to :tournament
   has_many :rosters
