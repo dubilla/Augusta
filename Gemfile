@@ -39,10 +39,11 @@ gem 'paper_trail'
 
 group :development do
   gem 'rubocop', require: false
-  gem "rails_best_practices", require: false
+  gem 'rails_best_practices', require: false
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'guard-rspec', require: false
 end
 
 group :test do
