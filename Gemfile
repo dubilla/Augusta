@@ -45,6 +45,10 @@ group :development do
   gem 'pry-nav'
 end
 
+group :test do
+  gem 'rspec-rails', '~> 3.5.0'
+end
+
 gem 'rails_12factor', group: :production
 
 # To use ActiveModel has_secure_password
