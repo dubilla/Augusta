@@ -36,6 +36,7 @@ gem 'dalli'
 gem 'draper', '~> 1.3'
 gem 'newrelic_rpm'
 gem 'paper_trail'
+gem 'pundit'
 
 group :development do
   gem 'rubocop', require: false
