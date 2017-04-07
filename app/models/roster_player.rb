@@ -10,7 +10,11 @@ class RosterPlayer < ActiveRecord::Base
   delegate :league_tournament, to: :roster
 
   def score
-    tournament_athlete["score"].to_i
+    if tournament_athlete.present?
+      tournament_athlete["score"].to_i
+    else
+      0
+    end
   end
 
   def status
