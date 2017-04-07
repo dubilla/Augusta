@@ -32,6 +32,7 @@ class RosterPlayer < ActiveRecord::Base
   private
 
   def linescores
+    return unless tournament_athlete.present?
     tournament_athlete["linescores"]
   end
 
