@@ -14,12 +14,23 @@
 
   h3 Player Leaders
   table.table-minimal(player-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:league_tournament_id]};")
-    tr(ng-repeat="player in playerLeaders")
-      td
-        | {{player.name}}
-      td
-        | {{player.user_name}}
-      td
-        | {{player.score}}
-      td
-        | {{player.status}}
+    thead
+      tr
+        th
+          | Golfer
+        th
+          | Foursome
+        th
+          | Thru
+        th
+          | Total
+    tbody
+      tr(ng-repeat="player in playerLeaders")
+        td
+          | {{player.name}}
+        td
+          | {{player.user_name}}
+        td
+          | {{player.status}}
+        td
+          | {{player.score}}
