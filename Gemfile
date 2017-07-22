@@ -47,8 +47,15 @@ group :development do
   gem 'guard-rspec', require: false
 end
 
-group :test do
+group :test, :development do
   gem 'rspec-rails', '~> 3.5.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 gem 'rails_12factor', group: :production
