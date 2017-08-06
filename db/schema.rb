@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728213121) do
+ActiveRecord::Schema.define(version: 20170806214726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170728213121) do
     t.datetime "updated_at"
     t.integer  "team_id"
   end
+
+  add_index "players", ["external_id"], name: "index_players_on_external_id", unique: true, using: :btree
 
   create_table "roster_players", force: true do |t|
     t.integer  "roster_id"
