@@ -11,4 +11,5 @@ FactoryGirl.define do
     winner false
   end
   factory :roster_player
+  factory :player
 end

@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/poltergeist'
 require 'support/factory_girl'
 require 'support/tasks'
+require 'support/vcr'
 
 Capybara.javascript_driver = :poltergeist
 # Add additional requires below this line. Rails is not loaded until this point!

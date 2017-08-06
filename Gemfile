@@ -41,14 +41,14 @@ gem 'pundit'
 group :development do
   gem 'rubocop', require: false
   gem 'rails_best_practices', require: false
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-nav'
   gem 'guard-rspec', require: false
 end
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.5.0'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 group :test do
@@ -56,6 +56,8 @@ group :test do
   gem 'poltergeist'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem 'rails_12factor', group: :production
