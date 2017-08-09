@@ -3,8 +3,10 @@
 
 h2 = @team.user.name
 
-section
-  h3 Team Wins
-  p = @team.rosters.winner.count
+section.stats
+  ul
+    li
+      | Team Wins
+      span = @team.rosters.winner.count
 
 = link_to 'Back', league_path(@team.league)
