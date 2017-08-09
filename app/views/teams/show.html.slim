@@ -3,12 +3,8 @@
 
 h2 = @team.user.name
 
-table
-  tr
-    th Team Wins
-    th Ind. Wins
-  tr
-    td = @team.team_wins
-    td = @team.individual_wins
+section
+  h3 Team Wins
+  p = @team.rosters.winner.count
 
 = link_to 'Back', league_path(@team.league)

@@ -7,6 +7,8 @@ class Roster < ActiveRecord::Base
   belongs_to :team
   belongs_to :league_tournament
 
+  scope :winner, -> { where winner: true }
+
   def score
     roster_players.map{|p| p.score}.reduce(:+)
   end
