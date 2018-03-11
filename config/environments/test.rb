@@ -31,4 +31,7 @@ Augusta::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Error handling in transaction callbacks
+  config.active_record.raise_in_transactional_callbacks = true
 end
