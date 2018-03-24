@@ -1,6 +1,15 @@
 .breadcrumb
   = link_to @league_tournament.league.name, league_path(@league_tournament.league)
 
+section
+  h3 Winners
+  table
+    tr
+      td
+        | Roster Winner
+      td
+        = @league_tournament.rosters.winner.map{|r| r.team.user.name }.join(", ")
+
 h2 = @league_tournament.tournament.name
 - @league_tournament.rosters.each do |roster|
   h3 = roster.team.user.name
