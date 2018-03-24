@@ -15,4 +15,11 @@ describe "rake finalizing:tournament", type: :task do
       expect(roster.reload.roster_players.map(&:final_score)).to match_array [-1, -2]
     end
   end
+
+  it "updates the tournament to complete" do
+    VCR.use_cassette("finalizing_tournament") do
+      task.execute(t_id: tournament.id)
+      expect(tournament.reload.completed).to be true
+    end
+  end
 end
