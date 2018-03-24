@@ -1,0 +1,99 @@
+@mixin hero-stat-columns($columns) {
+  width: (100% / 12) * $columns;
+}
+
+.hero-stats {
+  $action-color: #50825A;
+  $base-background-color: white !default;
+  $medium-screen: 40em !default;
+  $large-screen: 53.75em !default;
+  $hero-stats-background: $base-background-color;
+  $hero-stat-background: desaturate($action-color, 30%);
+  $hero-stat-colors:
+    desaturate($action-color, 4%),
+    #3581A5,
+    #5FBEBE,
+    #98C79A,
+    #A7A891,
+    #BDCC97,
+    #979EA0;
+  $hero-stat-border-size: 9px;
+  $hero-stat-columns: 4;
+  $hero-stat-big-columns: 8;
+  $hero-stat-color: white;
+
+  @include clearfix;
+
+  .hero-stat {
+    background: $hero-stat-background;
+    border-bottom: $hero-stat-border-size solid $hero-stats-background;
+    border-left: ($hero-stat-border-size / 2) solid $hero-stats-background;
+    border-right: ($hero-stat-border-size / 2) solid $hero-stats-background;
+    border-top: 0;
+    cursor: pointer;
+    float: left;
+    outline: none;
+    overflow: hidden;
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+
+    @include media($large-screen) {
+      @include hero-stat-columns($hero-stat-columns);
+    }
+
+    @for $i from 1 through length($hero-stat-colors) {
+// assign colors from $hero-stat-colors list
+      &:nth-child(#{$i}) {
+        $background-from-list: nth($hero-stat-colors, $i);
+        background-color: $background-from-list;
+        box-shadow: inset 0 0 1px 2px darken($background-from-list, 10%);
+      }
+    }
+  }
+
+  .hero-stat img {
+    display: block;
+    height: 3em;
+    margin: 0 auto 1em;
+  }
+
+  .hero-stat h4 {
+    color: $hero-stat-color;
+    font-size: 1.3em;
+    margin-bottom: 0.4em;
+  }
+
+  .hero-stat p {
+    color: transparentize($hero-stat-color, 0.3);
+    line-height: 1.5em;
+    margin: auto;
+
+    @include media($medium-screen) {
+      max-width: 70%;
+    }
+  }
+
+  .hero-stat-big {
+    @include media($large-screen) {
+      @include hero-stat-columns($hero-stat-big-columns);
+    }
+
+    p {
+      @include media($medium-screen) {
+        max-width: 60%;
+      }
+    }
+  }
+
+  .hero-stat-image {
+    background: url("https:
+//raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png");
+    background-color: $hero-stat-background;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

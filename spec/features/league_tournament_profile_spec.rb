@@ -21,10 +21,8 @@ RSpec.feature "League Tournament Profile", type: feature do
   end
 
   def i_see_the_league_tournament_roster_winner
-    within "section", text: "Winners" do
-      within "tr", text: "Roster Winner"  do
-        expect(page).to have_text "Cristian Penilla"
-      end
+    within "section", text: "Roster Winner" do
+      expect(page).to have_text "Cristian Penilla"
     end
   end
 end
