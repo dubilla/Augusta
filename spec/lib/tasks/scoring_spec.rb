@@ -1,6 +1,7 @@
 require "rails_helper"
 
 describe "rake scoring:league_tournament_rosters", type: :task do
+
   let!(:league_tournament) { create :league_tournament }
 
   context "there are no ties" do
@@ -28,6 +29,31 @@ describe "rake scoring:league_tournament_rosters", type: :task do
       task.execute(lt_id: league_tournament.id)
       expect(roster_winner1.reload.winner).to be_truthy
       expect(roster_winner2.reload.winner).to be_truthy
+    end
+  end
+end
+
+describe "rake scoring:league_tournament_roster_players", type: :task do
+
+  let!(:league_tournament) { create :league_tournament }
+  let(:roster) { create :roster, league_tournament: league_tournament }
+
+  context "there are no ties" do
+    let!(:roster_player_loser) { create :roster_player, final_score: -1, roster: roster }
+    let!(:roster_player_winner) { create :roster_player, final_score: -5, roster: roster }
+    it "marks the lowest score as the winner" do
+      task.execute(lt_id: league_tournament.id)
+      expect(roster_player_winner.reload.winner).to be true
+    end
+  end
+  context "there are ties" do
+    let!(:roster_player_loser) { create :roster_player, final_score: -1, roster: roster }
+    let!(:roster_player_winner1) { create :roster_player, final_score: -5, roster: roster }
+    let!(:roster_player_winner2) { create :roster_player, final_score: -5, roster: roster }
+    it "marks both lowest scores as the winners" do
+      task.execute(lt_id: league_tournament.id)
+      expect(roster_player_winner1.reload.winner).to be true
+      expect(roster_player_winner2.reload.winner).to be true
     end
   end
 end

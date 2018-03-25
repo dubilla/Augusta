@@ -12,5 +12,4 @@ class LeaderboardsController < ApplicationController
       format.json { render json: { players: @player_leaders, teams: @team_leaders } }
     end
   end
-
 end
