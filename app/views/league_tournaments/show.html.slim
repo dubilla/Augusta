@@ -7,6 +7,10 @@ section.hero-stats
   .hero-stat
     h4 Roster Winner
     p = @league_tournament.rosters.winner.map{|r| r.team.user.name }.join(", ")
+  .hero-stat
+    h4 Individual Winner
+    p = @league_tournament.roster_players.winner.map{|rp| rp.team.user.name }.join(", ")
+    p = @league_tournament.roster_players.winner.map{|rp| rp.name }.join(", ")
 br
 
 - @league_tournament.rosters.each do |roster|
