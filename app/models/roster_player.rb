@@ -8,6 +8,11 @@ class RosterPlayer < ActiveRecord::Base
   delegate :external_id, to: :player
   delegate :name, to: :player
   delegate :league_tournament, to: :roster
+  delegate :team, to: :roster
+  delegate :user, to: :team
+  delegate :name, to: :user, prefix: true
+
+  scope :winner, -> { where winner: true }
 
   def score
     if tournament_athlete.present?

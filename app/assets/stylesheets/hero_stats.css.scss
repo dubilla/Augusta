@@ -18,13 +18,15 @@
     #BDCC97,
     #979EA0;
   $hero-stat-border-size: 9px;
-  $hero-stat-columns: 4;
+  $hero-stat-height: 10em;
+  $hero-stat-columns: 6;
   $hero-stat-big-columns: 8;
   $hero-stat-color: white;
 
   @include clearfix;
 
   .hero-stat {
+    height: $hero-stat-height;
     background: $hero-stat-background;
     border-bottom: $hero-stat-border-size solid $hero-stats-background;
     border-left: ($hero-stat-border-size / 2) solid $hero-stats-background;
@@ -73,6 +75,22 @@
 
     @include media($medium-screen) {
       max-width: 70%;
+    }
+  }
+
+  .hero-stat p:nth-of-type(2) {
+    font-size: 0.9em;
+  }
+
+  .hero-stat-big {
+    @include media($large-screen) {
+      @include hero-stat-columns($hero-stat-big-columns);
+    }
+
+    p {
+      @include media($medium-screen) {
+        max-width: 60%;
+      }
     }
   }
 

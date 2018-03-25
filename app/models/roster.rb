@@ -7,6 +7,9 @@ class Roster < ActiveRecord::Base
   belongs_to :team
   belongs_to :league_tournament
 
+  delegate :user, to: :team
+  delegate :name, to: :user, prefix: true
+
   scope :winner, -> { where winner: true }
 
   def score
