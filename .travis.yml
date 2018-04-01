@@ -6,7 +6,8 @@ services:
 before_script:
   - psql -c "create user danubilla;" -U postgres
   - psql -c "alter user danubilla createdb;" -U postgres
-  - psql -c 'create database augusta_test;' -U postgres
+  - psql -c "create database augusta_test;" -U postgres
+  - psql -c "alter database augusta_test OWNER TO danubilla;" -U postgres
 script:
   - bundle exec rake db:test:prepare
 addons:
