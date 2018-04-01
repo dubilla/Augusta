@@ -8,10 +8,14 @@ RSpec.feature "Draft", type: feature do
   context "as a user" do
     let!(:user) { create :user }
     let!(:team) { create :team, user: user, league: league }
+    let!(:jordan_spieth) { create :player, first_name: "Jordan", last_name: "Spieth" }
+    let!(:tiger_woods) { create :player, first_name: "Tiger", last_name: "Woods" }
+    let!(:draft_pick) { create :draft_pick, draft: draft, player: jordan_spieth }
     scenario "I can make a pick" do
       given_i_login user
       when_i_visit_the_draft_page
       i_can_see_my_league_is_drafting
+      i_can_see_the_golfers_available
     end
   end
 
@@ -25,5 +29,13 @@ RSpec.feature "Draft", type: feature do
 
   def i_can_see_my_league_is_drafting
     expect(page).to have_link "Enter Draft"
+    click_link "Enter Draft"
+  end
+
+  def i_can_see_the_golfers_available
+    within "section", text: "Available Golfers" do
+      expect(page).to have_text "Tiger Woods"
+      expect(page).to have_no_text "Jordan Spieth"
+    end
   end
 end

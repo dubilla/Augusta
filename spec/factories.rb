@@ -13,6 +13,11 @@ FactoryGirl.define do
     winner false
   end
   factory :roster_player
-  factory :player
+  factory :player do
+    sequence :external_id do |n|
+      n
+    end
+  end
   factory :draft
+  factory :draft_pick
 end

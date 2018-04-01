@@ -1,0 +1,6 @@
+section
+  h3 Available Golfers
+  table
+    - (Player.all - @draft.draft_picks.map(&:player)).each do |p|
+      tr
+        td = p.name

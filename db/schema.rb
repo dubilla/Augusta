@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401175353) do
+ActiveRecord::Schema.define(version: 20180401183602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "draft_picks", force: :cascade do |t|
+    t.integer  "draft_id",   null: false
+    t.integer  "player_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "draft_picks", ["draft_id"], name: "index_draft_picks_on_draft_id", using: :btree
+  add_index "draft_picks", ["player_id"], name: "index_draft_picks_on_player_id", using: :btree
 
   create_table "drafts", force: :cascade do |t|
     t.integer  "league_tournament_id"
@@ -111,4 +121,6 @@ ActiveRecord::Schema.define(version: 20180401175353) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "draft_picks", "drafts"
+  add_foreign_key "draft_picks", "players"
 end
