@@ -14,4 +14,5 @@ FactoryGirl.define do
   end
   factory :roster_player
   factory :player
+  factory :draft
 end

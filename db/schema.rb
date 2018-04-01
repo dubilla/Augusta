@@ -11,25 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806214726) do
+ActiveRecord::Schema.define(version: 20180401175353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "league_tournaments", force: true do |t|
+  create_table "drafts", force: :cascade do |t|
+    t.integer  "league_tournament_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "league_tournaments", force: :cascade do |t|
     t.integer  "league_id"
     t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "leagues", force: true do |t|
+  create_table "leagues", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "players", force: true do |t|
+  create_table "players", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "external_id"
@@ -40,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170806214726) do
 
   add_index "players", ["external_id"], name: "index_players_on_external_id", unique: true, using: :btree
 
-  create_table "roster_players", force: true do |t|
+  create_table "roster_players", force: :cascade do |t|
     t.integer  "roster_id"
     t.integer  "player_id"
     t.datetime "created_at"
@@ -49,7 +55,7 @@ ActiveRecord::Schema.define(version: 20170806214726) do
     t.integer  "final_score"
   end
 
-  create_table "rosters", force: true do |t|
+  create_table "rosters", force: :cascade do |t|
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,14 +63,14 @@ ActiveRecord::Schema.define(version: 20170806214726) do
     t.boolean  "winner",               null: false
   end
 
-  create_table "teams", force: true do |t|
+  create_table "teams", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "league_id"
   end
 
-  create_table "tournaments", force: true do |t|
+  create_table "tournaments", force: :cascade do |t|
     t.string   "name"
     t.date     "start_date"
     t.integer  "external_id"
@@ -73,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170806214726) do
     t.boolean  "completed"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -94,7 +100,7 @@ ActiveRecord::Schema.define(version: 20170806214726) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "versions", force: true do |t|
+  create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false
     t.integer  "item_id",    null: false
     t.string   "event",      null: false
