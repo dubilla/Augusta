@@ -22,6 +22,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'angularjs-rails'
+  gem 'react-rails'
 end
 
 gem 'jquery-rails'
@@ -53,11 +54,12 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara-selenium'
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'vcr'
   gem 'webmock'
+  gem 'database_cleaner'
 end
 
 gem 'rails_12factor', group: :production

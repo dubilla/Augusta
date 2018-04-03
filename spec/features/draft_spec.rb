@@ -1,6 +1,6 @@
 require "rails_helper"
-RSpec.feature "Draft", type: feature do
-  let(:league) { create :league }
+RSpec.feature "Draft", type: feature, js: true do
+  let(:league) { create :league, name: "Up League" }
   let(:tournament) { create :tournament }
   let(:league_tournament) { create :league_tournament, league: league, tournament: tournament }
   let!(:draft) { create :draft, league_tournament: league_tournament }
@@ -30,6 +30,7 @@ RSpec.feature "Draft", type: feature do
   def i_can_see_my_league_is_drafting
     expect(page).to have_link "Enter Draft"
     click_link "Enter Draft"
+    expect(page).to have_text "Up League Draft"
   end
 
   def i_can_see_the_golfers_available
