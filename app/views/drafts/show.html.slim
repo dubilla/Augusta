@@ -1,8 +1,1 @@
-= react_component("Draft", league_name: @draft.league_tournament.league.name)
-
-section
-  h3 Available Golfers
-  table
-    - (Player.all - @draft.draft_picks.map(&:player)).each do |p|
-      tr
-        td = p.name
+= react_component("Draft", league_name: @draft.league_tournament.league.name, golfers: Player.all)
