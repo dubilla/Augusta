@@ -33,16 +33,12 @@ class RosterPlayer < ActiveRecord::Base
   private
 
   def tournament_athlete
-    tournament_golfers.detect{ |g| g["athlete"]["id"] == external_id }
+    tournament.athletes.detect{ |g| g["athlete"]["id"] == external_id }
   end
 
   def linescores
     return unless tournament_athlete.present?
     tournament_athlete["linescores"]
-  end
-
-  def tournament_golfers
-    tournament.athletes
   end
 
   def tournament
