@@ -7,8 +7,8 @@ class RosterPlayerStatus
   end
 
   def status
-    if linescores.present? && tournament.round.present? && linescores[tournament.round - 1]
-      linescores[tournament.round - 1]["thru"]
+    if linescores.present? && tournament_round.present? && linescores[tournament_round - 1]
+      linescores[tournament_round - 1]["thru"]
     else
       'cut'
     end
@@ -16,8 +16,8 @@ class RosterPlayerStatus
 
   private
 
-  def tournament
-    @tournament ||= TournamentData.new(@tournament_external_id, @completed)
+  def tournament_round
+    @tournament_round ||= TournamentData.new(@tournament_external_id, @completed).round
   end
 
   def tournament_athlete
