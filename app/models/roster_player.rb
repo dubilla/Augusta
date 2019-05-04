@@ -23,25 +23,12 @@ class RosterPlayer < ActiveRecord::Base
   end
 
   def status
-    if linescores.present? && tournament.round.present? && linescores[tournament.round - 1]
-      linescores[tournament.round - 1]["thru"]
-    else
-      'cut'
-    end
+    @status ||= RosterPlayerStatus.new(league_tournament.external_id, external_id, league_tournament.completed).status
   end
 
   private
 
   def tournament_athlete
-    tournament.athletes.detect{ |g| g["athlete"]["id"] == external_id }
-  end
-
-  def linescores
-    return unless tournament_athlete.present?
-    tournament_athlete["linescores"]
-  end
-
-  def tournament
-    @tournament ||= TournamentData.new(league_tournament.external_id, league_tournament.completed)
+    @tournament_athlete ||= TournamentAthleteFetcher.new(league_tournament.external_id, external_id, league_tournament.completed).tournament_athlete
   end
 end
