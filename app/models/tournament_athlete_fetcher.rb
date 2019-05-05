@@ -7,12 +7,12 @@ class TournamentAthleteFetcher
   end
 
   def tournament_athlete
-    tournament.athletes.detect{ |g| g["athlete"]["id"] == @athlete_external_id }
+    tournament_athletes.detect{ |g| g["athlete"]["id"] == @athlete_external_id }
   end
 
   private
 
-  def tournament
-    @tournament ||= TournamentData.new(@tournament_external_id, @completed)
+  def tournament_athletes
+    @tournament_athletes ||= TournamentData.new(@tournament_external_id, @completed).athletes
   end
 end
