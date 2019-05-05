@@ -7,25 +7,20 @@ class RosterPlayerStatus
   end
 
   def status
-    if linescores.present? && tournament_round.present? && linescores[tournament_round - 1]
-      linescores[tournament_round - 1]["thru"]
-    else
-      'cut'
-    end
+    roster_player_thru || "cut"
   end
 
   private
 
-  def tournament_round
-    @tournament_round ||= TournamentDataFetcher.new(@tournament_external_id, @completed).round
+  def roster_player_thru
+    @roster_player_thru ||= RosterPlayerThruParser.new(tournament_athlete, tournament_round).thru
   end
 
   def tournament_athlete
     @tournament_athlete ||= TournamentAthleteFetcher.new(@tournament_external_id, @athlete_external_id, @completed).tournament_athlete
   end
 
-  def linescores
-    return unless tournament_athlete.present?
-    tournament_athlete["linescores"]
+  def tournament_round
+    @tournament_round ||= TournamentDataFetcher.new(@tournament_external_id, @completed).round
   end
 end
