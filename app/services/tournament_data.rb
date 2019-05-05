@@ -17,9 +17,7 @@ class TournamentData
     event["period"]
   end
 
-  def event
-    response["sports"].first["leagues"].first["events"].first["competitions"].first
-  end
+  private
 
   def response
     Rails.cache.fetch("tournament/#{@id}", expires_in: expiration_time) do
@@ -27,7 +25,9 @@ class TournamentData
     end
   end
 
-  private
+  def event
+    response["sports"].first["leagues"].first["events"].first["competitions"].first
+  end
 
   def url
     @url ||= [@host, @version, @tournament_path, @id, '?apikey=', @apiKey].join
