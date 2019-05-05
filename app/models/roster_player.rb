@@ -15,11 +15,7 @@ class RosterPlayer < ActiveRecord::Base
   scope :winner, -> { where winner: true }
 
   def score
-    if tournament_athlete.present?
-      tournament_athlete["score"].to_i
-    else
-      0
-    end
+    tournament_athlete_score || 0
   end
 
   def status
@@ -28,8 +24,8 @@ class RosterPlayer < ActiveRecord::Base
 
   private
 
-  def tournament_athlete
-    @tournament_athlete ||= TournamentAthleteFetcher.new(league_tournament.external_id, external_id, league_tournament.completed).tournament_athlete
+  def tournament_athlete_score
+    @tournament_athlete_score ||= RosterPlayerScoreParser.new(league_tournament.external_id, external_id, league_tournament.completed).score
   end
 
   def thru
