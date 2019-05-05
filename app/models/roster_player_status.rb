@@ -17,7 +17,7 @@ class RosterPlayerStatus
   private
 
   def tournament_round
-    @tournament_round ||= TournamentData.new(@tournament_external_id, @completed).round
+    @tournament_round ||= TournamentDataFetcher.new(@tournament_external_id, @completed).round
   end
 
   def tournament_athlete

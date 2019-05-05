@@ -13,6 +13,6 @@ class TournamentAthleteFetcher
   private
 
   def tournament_athletes
-    @tournament_athletes ||= TournamentData.new(@tournament_external_id, @completed).athletes
+    @tournament_athletes ||= TournamentDataFetcher.new(@tournament_external_id, @completed).athletes
   end
 end

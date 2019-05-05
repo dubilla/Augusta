@@ -1,4 +1,4 @@
-class TournamentData
+class TournamentDataFetcher
 
   def initialize id, completed
     @host = 'http://api.espn.com/'
