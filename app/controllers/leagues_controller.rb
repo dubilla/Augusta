@@ -9,7 +9,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = League.includes(:teams).find(params[:id])
+    @league = League.includes(:tournaments, teams: :user).find(params[:id])
 
     respond_to do |format|
       format.html
