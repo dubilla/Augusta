@@ -1,6 +1,6 @@
 .breadcrumb
   = link_to @league_tournament.league.name, league_path(@league_tournament.league)
-  = link_to @league_tournament.tournament.name, league_league_tournament_path(@league_tournament.league, @league_tournament.tournament)
+  = link_to @league_tournament.tournament.name, league_tournament_path(@league_tournament.league, @league_tournament.tournament)
 
 .inner-container(ng-app="leaderboard")
   h2 Leaderboard

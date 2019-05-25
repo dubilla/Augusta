@@ -2,7 +2,7 @@ h2 = @league.name
 - if @league.active_league_tournament
   section.notice
     span.notice-description Live!
-    = link_to @league.active_league_tournament.name, league_league_tournament_leaderboards_path(@league, @league.active_league_tournament)
+    = link_to @league.active_league_tournament.name, league_tournament_leaderboards_path(@league, @league.active_league_tournament)
 section
   h3 Teams
   table.table-minimal
@@ -14,6 +14,6 @@ section
   table.table-minimal
     - @league.league_tournaments.sort_by{|t| t.start_date}.each do |lt|
       tr
-        td = link_to lt.name, league_league_tournament_path(@league, lt)
+        td = link_to lt.name, league_tournament_path(@league, lt)
         td = lt.start_date
-        td = link_to "Leaderboard", league_league_tournament_leaderboards_path(@league, lt)
+        td = link_to "Leaderboard", league_tournament_leaderboards_path(@league, lt)

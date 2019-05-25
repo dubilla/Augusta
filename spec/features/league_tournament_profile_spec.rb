@@ -20,7 +20,7 @@ RSpec.feature "League Tournament Profile", type: feature do
   end
 
   def given_i_visit_the_league_tournament_profile_page
-    visit league_league_tournament_path league, league_tournament
+    visit league_tournament_path league, league_tournament
   end
 
   def i_see_the_league_tournament_roster_winner
