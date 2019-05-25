@@ -10,6 +10,7 @@ class LeagueTournament < ActiveRecord::Base
   delegate :external_id, to: :tournament
   delegate :start_date, to: :tournament
   delegate :completed, to: :tournament
+  delegate :name, to: :tournament
 
   scope :active, -> { joins(:tournament).merge(Tournament.active) }
 
