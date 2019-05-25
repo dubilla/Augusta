@@ -6,4 +6,7 @@ class League < ActiveRecord::Base
   has_many :tournaments, through: :league_tournaments
   has_many :teams, inverse_of: :league
 
+  def active_league_tournament
+    league_tournaments.active.first
+  end
 end

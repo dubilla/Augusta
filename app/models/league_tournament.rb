@@ -11,4 +11,6 @@ class LeagueTournament < ActiveRecord::Base
   delegate :start_date, to: :tournament
   delegate :completed, to: :tournament
 
+  scope :active, -> { joins(:tournament).merge(Tournament.active) }
+
 end
