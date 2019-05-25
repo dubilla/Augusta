@@ -12,7 +12,7 @@ section
 section
   h3 Tournaments
   table.table-minimal
-    - @league.league_tournaments.sort_by{|t| t.start_date}.each do |lt|
+    - @league.league_tournaments.sort_by{|t| !t.start_date}.each do |lt|
       tr
         td = link_to lt.name, league_tournament_path(@league, lt)
         td = lt.start_date
