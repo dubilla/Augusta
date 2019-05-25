@@ -17,6 +17,10 @@ class TournamentDataFetcher
     event["period"]
   end
 
+  def status
+    event["status"]["detail"]
+  end
+
   private
 
   def response
