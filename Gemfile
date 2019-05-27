@@ -45,7 +45,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rspec-rails'
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
