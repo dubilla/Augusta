@@ -1,4 +1,4 @@
-class League < ActiveRecord::Base
+class League < ApplicationRecord
 
   has_paper_trail
 

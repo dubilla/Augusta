@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,10 +20,9 @@ ActiveRecord::Schema.define(version: 20190512214105) do
     t.integer  "player_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["draft_id"], name: "index_draft_picks_on_draft_id", using: :btree
+    t.index ["player_id"], name: "index_draft_picks_on_player_id", using: :btree
   end
-
-  add_index "draft_picks", ["draft_id"], name: "index_draft_picks_on_draft_id", using: :btree
-  add_index "draft_picks", ["player_id"], name: "index_draft_picks_on_player_id", using: :btree
 
   create_table "drafts", force: :cascade do |t|
     t.integer  "league_tournament_id"
@@ -40,21 +38,20 @@ ActiveRecord::Schema.define(version: 20190512214105) do
   end
 
   create_table "leagues", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",  limit: 255
+    t.string   "last_name",   limit: 255
     t.integer  "external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "team_id"
+    t.index ["external_id"], name: "index_players_on_external_id", unique: true, using: :btree
   end
-
-  add_index "players", ["external_id"], name: "index_players_on_external_id", unique: true, using: :btree
 
   create_table "roster_players", force: :cascade do |t|
     t.integer  "roster_id"
@@ -81,45 +78,43 @@ ActiveRecord::Schema.define(version: 20190512214105) do
   end
 
   create_table "tournaments", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.date     "start_date"
     t.integer  "external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "completed",   default: false
+    t.boolean  "completed",               default: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "admin",                  default: false
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.boolean  "admin",                              default: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
-    t.string   "whodunnit"
+    t.string   "item_type",  limit: 255, null: false
+    t.integer  "item_id",                null: false
+    t.string   "event",      limit: 255, null: false
+    t.string   "whodunnit",  limit: 255
     t.text     "object"
     t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   add_foreign_key "draft_picks", "drafts"
   add_foreign_key "draft_picks", "players"

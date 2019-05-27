@@ -1,4 +1,4 @@
-class RosterPlayer < ActiveRecord::Base
+class RosterPlayer < ApplicationRecord
 
   has_paper_trail
 

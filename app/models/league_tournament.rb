@@ -1,4 +1,4 @@
-class LeagueTournament < ActiveRecord::Base
+class LeagueTournament < ApplicationRecord
 
   has_paper_trail
 

@@ -2,37 +2,33 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
-gem 'rails', '~>4.2'
+gem 'rails', '~> 5.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'pg', '< 1.0'
 
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'sprockets'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'sprockets'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-  gem 'angularjs-rails'
-end
+gem 'uglifier', '>= 1.0.3'
+gem 'angularjs-rails', '=1.2.20'
 
 gem 'jquery-rails'
 gem 'devise'
 gem 'rake'
 gem 'httparty'
 gem 'slim-rails'
-gem 'bourbon'
-gem 'neat'
-gem 'bitters'
+gem 'bourbon', '~> 4.0'
+gem 'neat', '~> 1.0'
+gem 'bitters', '~> 1.2.0'
 gem 'dalli'
+gem 'activemodel-serializers-xml'
 gem 'draper'
 gem 'newrelic_rpm'
 gem 'paper_trail'
