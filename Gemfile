@@ -26,7 +26,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
-gem 'rake', '~> 10.3.0'
+gem 'rake'
 gem 'httparty'
 gem 'slim-rails'
 gem 'bourbon'
