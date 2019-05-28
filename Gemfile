@@ -10,7 +10,6 @@ gem 'rails', '~> 5.1.0'
 gem 'pg', '< 1.0'
 
 gem 'sass-rails'
-gem 'sprockets'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby

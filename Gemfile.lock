@@ -341,7 +341,6 @@ DEPENDENCIES
   rubocop
   sass-rails
   slim-rails
-  sprockets
   uglifier (>= 1.0.3)
   vcr
   webmock
