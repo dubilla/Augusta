@@ -15,9 +15,11 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import Rails from 'rails-ujs';
 import '../src/leaderboard/leaderboard.js'
 import '../src/leaderboard/leaderboard_service.js'
 import '../src/leaderboard/player_leaderboard_directive.js'
 import '../src/leaderboard/team_leaderboard_directive.js'
 
+Rails.start();
 console.log('Hello World from Webpacker')

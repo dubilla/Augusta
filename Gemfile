@@ -17,10 +17,8 @@ gem 'sprockets'
 # gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.0.3'
-gem 'angularjs-rails', '=1.2.20'
 gem 'webpacker', '~> 4.0'
 
-gem 'jquery-rails'
 gem 'devise'
 gem 'rake'
 gem 'httparty'
