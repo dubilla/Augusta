@@ -22,4 +22,3 @@ import '../src/leaderboard/player_leaderboard_directive.js'
 import '../src/leaderboard/team_leaderboard_directive.js'
 
 Rails.start();
-console.log('Hello World from Webpacker')
