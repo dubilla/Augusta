@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :drafts, only: :show
+
   devise_for :users
 
   get 'welcome/index'

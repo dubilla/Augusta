@@ -3,6 +3,10 @@
 
 h2 = @league_tournament.name
 
+- if @league_tournament.draft.open?
+  section.notice
+    = link_to "Join the Draft!", draft_path(@league_tournament.draft)
+
 section.hero-stats
   .hero-stat
     h4 Roster Winner

@@ -6,6 +6,7 @@ class LeagueTournament < ApplicationRecord
   belongs_to :tournament
   has_many :rosters
   has_many :roster_players, through: :rosters
+  has_one :draft
 
   delegate :external_id, to: :tournament
   delegate :start_date, to: :tournament

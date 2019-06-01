@@ -1,0 +1,4 @@
+.breadcrumb
+  = link_to @draft.league_tournament.name, league_tournament_path(@draft.league_tournament)
+
+h2 = "#{@draft.league.name} #{@draft.league_tournament.name} Draft"
