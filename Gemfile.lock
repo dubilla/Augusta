@@ -92,6 +92,7 @@ GEM
       sexp_processor
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -278,6 +279,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    react-rails (2.5.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     regexp_parser (1.5.1)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -404,6 +411,7 @@ DEPENDENCIES
   rails_12factor
   rails_best_practices
   rake
+  react-rails
   rspec-rails
   rubocop
   sass-rails

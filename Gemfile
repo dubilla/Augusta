@@ -17,6 +17,7 @@ gem 'sass-rails'
 
 gem 'uglifier', '>= 1.0.3'
 gem 'webpacker', '~> 4.0'
+gem 'react-rails'
 
 gem 'devise'
 gem 'rake'
