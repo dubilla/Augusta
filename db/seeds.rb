@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Player.create(first_name: "Rickie", last_name: "Fowler", external_id: 3702)
 Player.create(first_name: "Adam", last_name: "Scott", external_id: 388)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

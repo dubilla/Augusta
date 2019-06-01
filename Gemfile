@@ -31,6 +31,7 @@ gem 'draper'
 gem 'newrelic_rpm'
 gem 'paper_trail'
 gem 'pundit'
+gem 'activeadmin'
 
 group :development do
   gem 'rubocop', require: false
