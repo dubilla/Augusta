@@ -1,10 +1,27 @@
 import React from "react"
 import PropTypes from "prop-types"
+import PlayersList from "./PlayersList"
 class Draft extends React.Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      players: []
+    };
+  }
+
+  componentDidMount() {
+    fetch('/players')
+      .then(response => response.json())
+      .then(players =>
+        this.setState({
+          players
+        }));
+  }
+
+  render() {
     return (
       <div>
-        Hey!
+        <PlayersList players={this.state.players} />
       </div>
     );
   }
