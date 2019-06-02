@@ -1,15 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import PlayersList from "./PlayersList"
-import Picks from "./Picks"
+import Slots from "./Slots"
 
 class Draft extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       players: [],
-      picks: [],
-      teamCount: props.teamCount
+      picks: []
     };
   }
 
@@ -20,18 +19,18 @@ class Draft extends React.Component {
         this.setState({
           players
         }));
-    fetch(`/draft_picks?draft_id=${this.props.draft_id}`)
+    fetch(`/draft_slots?draft_id=${this.props.draft_id}`)
       .then(response => response.json())
-      .then(picks =>
+      .then(slots =>
         this.setState({
-          draftPicks: picks
+          slots
         }));
   }
 
   render() {
     return (
       <div>
-        <Picks picks={this.state.draftPicks} teamCount={this.state.teamCount} />
+        <Slots slots={this.state.slots} />
         <PlayersList players={this.state.players}  />
       </div>
     );

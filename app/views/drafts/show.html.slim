@@ -3,4 +3,4 @@
 
 h2 = "#{@draft.league.name} #{@draft.league_tournament.name} Draft"
 
-= react_component("draft/Draft", draft_id: @draft.id, teamCount: @draft.league_tournament.league.teams.count)
+= react_component("draft/Draft", draft_id: @draft.id)

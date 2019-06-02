@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :drafts, only: :show
-  resources :draft_picks, only: :index
+  resources :draft_slots, only: :index
 
   devise_for :users
 

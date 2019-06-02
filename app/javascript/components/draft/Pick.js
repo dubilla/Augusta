@@ -12,9 +12,6 @@ class Pick extends React.Component {
         <div>
           {this.props.pick.player.first_name} {this.props.pick.player.last_name}
         </div>
-        <div>
-          {this.props.pick.team.name}
-        </div>
       </div>
     ) : ""
   }
