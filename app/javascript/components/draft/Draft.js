@@ -1,11 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import PlayersList from "./PlayersList"
+import Picks from "./Picks"
+
 class Draft extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: []
+      players: [],
+      picks: [],
+      teamCount: props.teamCount
     };
   }
 
@@ -16,12 +20,19 @@ class Draft extends React.Component {
         this.setState({
           players
         }));
+    fetch("/draft_picks?draft=#{draft_id}")
+      .then(response => response.json())
+      .then(picks =>
+        this.setState({
+          draftPicks: picks
+        }));
   }
 
   render() {
     return (
       <div>
-        <PlayersList players={this.state.players} />
+        <Picks picks={this.state.picks} teamCount={this.state.teamCount} />
+        <PlayersList players={this.state.players}  />
       </div>
     );
   }
