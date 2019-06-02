@@ -33,6 +33,7 @@ gem 'newrelic_rpm'
 gem 'paper_trail'
 gem 'pundit'
 gem 'activeadmin'
+gem 'active_model_serializers'
 
 group :development do
   gem 'rubocop', require: false

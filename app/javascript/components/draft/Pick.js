@@ -10,10 +10,10 @@ class Pick extends React.Component {
     return this.props.pick ? (
       <div>
         <div>
-          {this.props.pick.player_id}
+          {this.props.pick.player.first_name} {this.props.pick.player.last_name}
         </div>
         <div>
-          {this.props.pick.team_id}
+          {this.props.pick.team.name}
         </div>
       </div>
     ) : ""
