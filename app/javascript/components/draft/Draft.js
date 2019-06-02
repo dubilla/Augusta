@@ -20,7 +20,7 @@ class Draft extends React.Component {
         this.setState({
           players
         }));
-    fetch("/draft_picks?draft=#{draft_id}")
+    fetch(`/draft_picks?draft_id=${this.props.draft_id}`)
       .then(response => response.json())
       .then(picks =>
         this.setState({
@@ -31,7 +31,7 @@ class Draft extends React.Component {
   render() {
     return (
       <div>
-        <Picks picks={this.state.picks} teamCount={this.state.teamCount} />
+        <Picks picks={this.state.draftPicks} teamCount={this.state.teamCount} />
         <PlayersList players={this.state.players}  />
       </div>
     );

@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import Pick from "./Pick"
 
 class Picks extends React.Component {
   constructor(props) {
@@ -20,17 +21,15 @@ class Picks extends React.Component {
     return (
       <ul>
         {[...Array(this.state.slotCount)].map((_, i) => {
-          return (
+          return this.state.picks ? (
             <li key={i + 1}>
               <div>
                 Pick {i + 1}
               </div>
-              <div>
-                {this.state.picks[i]}
-              </div>
+              <Pick pick={this.state.picks[i]} />
             </li>
-          )
-        })}
+          ) : ""
+        }, this)}
       </ul>
     )
   }
