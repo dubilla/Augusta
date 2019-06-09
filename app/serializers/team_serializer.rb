@@ -1,5 +1,5 @@
 class TeamSerializer < ActiveModel::Serializer
-  attributes :name
+  attributes :id, :name
 
   def name
     object.user.name

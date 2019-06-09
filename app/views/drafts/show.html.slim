@@ -3,4 +3,5 @@
 
 h2 = "#{@draft.league.name} #{@draft.league_tournament.name} Draft"
 
-= react_component("draft/Draft", draft_id: @draft.id)
+- if current_user.present?
+  = react_component("draft/Draft", draft_id: @draft.id, current_team: @draft.league.teams.detect{|t| t.user == current_user})
