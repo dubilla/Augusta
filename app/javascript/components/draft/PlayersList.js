@@ -5,23 +5,37 @@ class PlayersList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: []
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      players: props.players
-    }
+  handleClick = (player) => {
+    this.props.onSelection(player);
   }
 
   render() {
+    let pickCell;
+    if (this.props.isUserPickPending) {
+      pickCell = (player) =>
+        <td><button onClick={() => this.handleClick(player)}>Pick</button></td>;
+    } else {
+      pickCell = () =>
+        <td></td>;
+    }
     return (
-      <ul>
-        {this.state.players.map((player) => {
-          return <li key={player.id}>{player.first_name} {player.last_name}</li>
-        })}
-      </ul>
+      <table>
+        <tbody>
+          {this.props.players.map((player) => {
+            return (
+              <tr key={player.id}>
+                {pickCell(player)}
+                <td>
+                  {player.first_name} {player.last_name}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     )
   }
 }

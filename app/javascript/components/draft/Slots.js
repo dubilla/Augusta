@@ -5,15 +5,6 @@ import Pick from "./Pick"
 class Slots extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      slots: []
-    };
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    return {
-      slots: props.slots
-    }
   }
 
   render() {

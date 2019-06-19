@@ -1,3 +1,3 @@
 class DraftPickSerializer < ActiveModel::Serializer
-  attributes :player
+  belongs_to :player
 end

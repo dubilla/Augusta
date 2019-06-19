@@ -29,6 +29,22 @@ class Draft extends React.Component {
         })));
   }
 
+  addDraftPick(pick) {
+    this.setState((currentState) => {
+      return {
+        slots: currentState.slots.map((slot) => {
+          if (slot.id === currentState.nextSlot.id) {
+            slot.draft_pick = {
+              player: pick.player
+            }
+            return slot;
+          }
+          return slot;
+        })
+      };
+    });
+  }
+
   findNextSlot(slots) {
     return slots.find(function(element) {
       return !element.draft_pick;
@@ -37,6 +53,25 @@ class Draft extends React.Component {
 
   isUserPickPending() {
     return this.state.nextSlot && this.state.nextSlot.team.id === this.props.current_team.id;
+  }
+
+  handleSelection = (player) => {
+    let body = JSON.stringify({
+      draft_pick: {
+        draft_slot_id: this.state.nextSlot.id,
+        player_id: player.id
+      }
+    });
+    fetch('/draft_picks/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body
+    }).then((response) => { return response.json() })
+    .then((pick) => {
+      this.addDraftPick(pick);
+    });
   }
 
   render() {
@@ -50,7 +85,7 @@ class Draft extends React.Component {
       <div>
         {nextAlert}
         <Slots slots={this.state.slots} />
-        <PlayersList players={this.state.players}  />
+        <PlayersList players={this.state.players} isUserPickPending={this.isUserPickPending()} onSelection={(player) => this.handleSelection(player)}/>
       </div>
     );
   }

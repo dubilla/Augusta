@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :drafts, only: :show
   resources :draft_slots, only: :index
+  resources :draft_picks, only: :create
 
   devise_for :users
 
