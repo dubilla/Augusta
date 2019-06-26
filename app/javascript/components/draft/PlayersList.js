@@ -25,7 +25,10 @@ class PlayersList extends React.Component {
           {this.props.players.map((player) => {
             return (
               <tr key={player.id}>
-                {pickCell(player)}
+                {this.props.isUserPickPending
+                ? <td><button onClick={() => this.handleClick(player)}>Pick</button></td>
+                : <td></td>
+                }
                 <td>
                   {player.first_name} {player.last_name}
                 </td>
