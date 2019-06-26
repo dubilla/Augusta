@@ -32,6 +32,7 @@ class Draft extends React.Component {
   addDraftPick(pick) {
     this.setState((currentState) => {
       return {
+        isUserPickPending: this.isUserPickPending(),
         slots: currentState.slots.map((slot) => {
           if (slot.id === currentState.nextSlot.id) {
             slot.draft_pick = {
@@ -40,6 +41,9 @@ class Draft extends React.Component {
             return slot;
           }
           return slot;
+        }),
+        nextSlot: currentState.slots.find(function(slot) {
+          return slot.order === currentState.nextSlot.order + 1;
         })
       };
     });

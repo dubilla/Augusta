@@ -4,8 +4,6 @@ import PropTypes from "prop-types"
 class PlayersList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   handleClick = (player) => {
