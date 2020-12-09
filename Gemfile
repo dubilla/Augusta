@@ -32,6 +32,7 @@ gem 'newrelic_rpm'
 gem 'paper_trail'
 gem 'pundit'
 gem 'activeadmin'
+gem 'jsonapi-rails'
 
 group :development do
   gem 'rubocop', require: false

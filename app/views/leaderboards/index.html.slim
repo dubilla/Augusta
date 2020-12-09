@@ -8,7 +8,7 @@
     section.notice
       = @league_tournament.tournament.status
   h3 Tournament Leaders
-  table.table-minimal(team-leaders="true" ng-init="leagueID=#{params[:league_id]};tournamentID=#{params[:tournament_id]};")
+  table.table-minimal(team-leaders="true" ng-init="leagueTournamentID=#{@league_tournament.id}")
     tr(ng-repeat="team in teamLeaders")
       td
         | {{team.name}}

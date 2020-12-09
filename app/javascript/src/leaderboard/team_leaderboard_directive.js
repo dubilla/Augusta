@@ -1,11 +1,17 @@
 angular.module('leaderboard')
-.directive('teamLeaders', ['leadersService', '$interval', function(leadersService, $interval) {
+.directive('teamLeaders', ['rostersService', '$interval', function(rostersService, $interval) {
   return {
     restrict: 'A',
     link: ($scope) => {
       var load = function() {
-        leadersService.getAllLeaders($scope.leagueID, $scope.tournamentID).success((response) => {
-          $scope.teamLeaders = response.teams;
+        rostersService.getAll($scope.leagueTournamentID).success((response) => {
+          $scope.teamLeaders = response.data.map(function(team) {
+            return {
+              id: team.id,
+              name: team.attributes["name"],
+              score: team.attributes["score"]
+            };
+          });
         });
       };
       $interval(
