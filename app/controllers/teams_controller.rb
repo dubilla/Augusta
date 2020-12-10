@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id]).decorate
+    @team = Team.find(params[:id])
 
     respond_to do |format|
       format.html
