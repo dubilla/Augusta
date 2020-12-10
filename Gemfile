@@ -32,6 +32,7 @@ gem 'paper_trail'
 gem 'pundit'
 gem 'activeadmin'
 gem 'jsonapi-rails'
+gem 'puma'
 
 group :development do
   gem 'rubocop', require: false
