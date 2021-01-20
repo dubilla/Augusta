@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [],
@@ -63,6 +63,14 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+    },
+    extend: {
+      colors: {
+        green: {
+          200: '#58AD69',
+          300: '#50825a'
+        }
+      }
     },
     animation: {
       none: 'none',
@@ -852,4 +860,4 @@ module.exports = {
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
   plugins: [],
-}
+};

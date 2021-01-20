@@ -1,19 +1,18 @@
-header.navigation
-  .menu-wrapper
-    a.logo href="javascript:void(0)" class="logo"
-      img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png"
-    p#js-mobile-menu.navigation-menu-button Menu
-    .nav
+header.navigation.bg-green-300.flow-root
+  .menu-wrapper.mx-auto.max-w-7xl
+    a.logo.float-left.pl-4.pr-8 href="javascript:void(0)" class="logo"
+      img.max-h-16.py-3 src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png"
+    .nav.float-left.mt-3
       ul#navigation-menu
-        li.nav-link
+        li.nav-link.text-gray-200.leading-10
           a href= leagues_path Leagues
-    .navigation-tools
+    .navigation-tools.float-right.pr-4.mt-3
       - if user_signed_in?
         .signed-in-wrapper
           span.text = "Hi, #{current_user.first_name}"
           = link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "sign-out"
       - else
-        a.sign-up href= new_user_registration_path Sign Up
-        .sign-in-wrapper
-          span.text or
-          a.sign-in href="/users/sign_in" Sign In
+        a.sign-up.block.p-1.bg-green-200.float-left.text-white href= new_user_registration_path Sign Up
+        .sign-in-wrapper.float-right.mt-1
+          span.text.text-white.mx-2 or
+          a.sign-in.text-white href="/users/sign_in" Sign In
