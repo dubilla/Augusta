@@ -1,5 +1,5 @@
-h2 Leagues
-table.table-minimal
+h2.text-3xl.font-bold.border-b-2 Leagues
+table.table-minimal.table-fixed.w-full.border-gray-300
   - @leagues.each do |league|
     tr
-      td = link_to league.name, league_path(league)
+      td.p-2.border-b.border-gray-300 = link_to league.name, league_path(league)
