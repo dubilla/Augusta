@@ -1,23 +1,23 @@
 .breadcrumb
-  = link_to @league_tournament.name, league_path(@league_tournament.league)
+  = link_to @league_tournament.name, league_path(@league_tournament.league), class: "text-blue-600"
 
-h2 = @league_tournament.name
+h2.text-3xl.font-bold = @league_tournament.name
 
-section.hero-stats
+section.hero-stats.mt-4
   .hero-stat
-    h4 Roster Winner
+    h4.text-xl.border-b-2 Roster Winner
     p = @league_tournament.rosters.winner.map(&:user_name).join(", ")
   .hero-stat
-    h4 Individual Winner
+    h4.text-xl.border-b-2 Individual Winner
     p = @league_tournament.roster_players.winner.map(&:user_name).join(", ")
     p = @league_tournament.roster_players.winner.map(&:name).join(", ")
 br
 
 - @league_tournament.rosters.each do |roster|
-  h4 = roster.team.user.name
-  table.table-minimal
+  h4.text-xl.border-b-2 = roster.team.user.name
+  table.table-minimal.w-full
     - roster.players.each do |player|
       tr
-        td = player.name
+        td.p-2.border-b.border-gray-300 = player.name
 
-= link_to 'Back', leagues_path
+= link_to 'Back', leagues_path, class: "text-blue-600"
