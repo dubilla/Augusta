@@ -16,7 +16,7 @@ gem 'sass-rails'
 # gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.0.3'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.x'
 
 gem 'devise'
 gem 'rake'
