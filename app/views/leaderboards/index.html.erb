@@ -1,0 +1,63 @@
+<div class="breadcrumb">
+  <%= link_to @league_tournament.league.name, league_path(@league_tournament.league), class: "text-blue-600" %>
+  <%= link_to @league_tournament.name, league_tournament_path(@league_tournament.league, @league_tournament.tournament), class: "text-blue-600" %>
+</div>
+<div class="inner-container" ng-app="leaderboard">
+  <h2 class="text-3xl font-bold">Leaderboard</h2>
+  <% if !@league_tournament.tournament.completed? %>
+    <section class="notice p-2 bg-yellow-100 border-yellow-400 border mt-4">
+      <span class="notice-description mr-1"><%= @league_tournament.tournament.status %>
+      </span>
+    </section>
+  <% end %>
+  <section class="mt-4">
+    <h3 class="text-xl border-b-2">Tournament Leaders</h3>
+    <table class="table-minimal w-full border-gray-300" ng-init="leagueTournamentID=<%= @league_tournament.id %>" team-leaders="true">
+      <tr ng-repeat="team in teamLeaders">
+        <td class="p-2 border-b border-gray-300">
+          {{team.name}}
+        </td>
+        <td class="p-2 border-b border-gray-300">
+          {{team.score}}
+        </td>
+      </tr>
+    </table>
+  </section>
+  <section class="mt-6">
+    <h3 class="text-xl border-b-2">Player Leaders</h3>
+    <table class="table-minimal table-fixed w-full border-gray-300" ng-init="leagueID=<%= params[:league_id] %>;tournamentID=<%= params[:tournament_id] %>;" player-leaders="true">
+      <thead>
+        <tr>
+          <th class="p-2 border-b border-gray-300 text-left">
+            Golfer
+          </th>
+          <th class="p-2 border-b border-gray-300 text-left">
+            Foursome
+          </th>
+          <th class="p-2 border-b border-gray-300 text-left">
+            Total
+          </th>
+          <th class="p-2 border-b border-gray-300 text-left">
+            Thru
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in playerLeaders">
+          <td class="p-2 border-b border-gray-300">
+            {{player.name}}
+          </td>
+          <td class="p-2 border-b border-gray-300">
+            {{player.user_name}}
+          </td>
+          <td class="p-2 border-b border-gray-300">
+            {{player.score}}
+          </td>
+          <td class="p-2 border-b border-gray-300">
+            {{player.status}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

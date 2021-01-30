@@ -1,0 +1,33 @@
+<h2 class="text-3xl font-bold"><%= @league.name %></h2>
+<% if @league.active_league_tournament %>
+  <section class="notice p-2 bg-yellow-100 border-yellow-400 border mt-4">
+  <span class="notice-description mr-1">Live!</span>
+  <%= link_to @league.active_league_tournament.name, league_tournament_leaderboards_path(@league, @league.active_league_tournament), class: "text-blue-600" %>
+  </section>
+<% end %>
+<section class="mt-4">
+  <h3 class="text-xl border-b-2">Teams</h3>
+  <table class="table-minimal w-full">
+    <% @league.teams.each do |t| %>
+      <tr>
+        <td class="p-2 border-b border-gray-300">
+          <%= link_to t.user.name, league_team_path(@league, t), class: "text-blue-600" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+<section class="mt-6">
+  <h3 class="text-xl border-b-2">Tournaments</h3>
+  <table class="table-minimal table-fixed w-full border-gray-300">
+    <% @league.league_tournaments.sort_by{|t| !t.start_date}.each do |lt| %>
+      <tr>
+        <td class="p-2 border-b border-gray-300"><%= link_to lt.name, league_tournament_path(@league, lt), class: "text-blue-600" %>
+        </td>
+        <td class="p-2 border-b border-gray-300"><%= lt.start_date %></td>
+        <td class="p-2 border-b border-gray-300"><%= link_to "Leaderboard", league_tournament_leaderboards_path(@league, lt), class: "text-blue-600" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>

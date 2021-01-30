@@ -1,0 +1,39 @@
+<div class="breadcrumb">
+  <%= link_to @league_tournament.name, league_path(@league_tournament.league), class: "text-blue-600" %>
+</div>
+<h2 class="text-3xl font-bold">
+  <%= @league_tournament.name %>
+</h2>
+<section class="hero-stats mt-4">
+  <div class="hero-stat">
+    <h4 class="text-xl border-b-2">Roster Winner</h4>
+    <p>
+      <%= @league_tournament.rosters.winner.map(&:user_name).join(", ") %>
+    </p>
+  </div>
+  <div class="hero-stat">
+    <h4 class="text-xl border-b-2">Individual Winner</h4>
+    <p>
+      <%= @league_tournament.roster_players.winner.map(&:user_name).join(", ") %>
+    </p>
+    <p>
+      <%= @league_tournament.roster_players.winner.map(&:name).join(", ") %>
+    </p>
+  </div>
+</section>
+
+<br />
+
+<% @league_tournament.rosters.each do |roster| %>
+  <h4 class="text-xl border-b-2"><%= roster.team.user.name %></h4>
+  <table class="table-minimal w-full">
+    <% roster.players.each do |player| %>
+      <tr>
+        <td class="p-2 border-b border-gray-300">
+          <%= player.name %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= link_to 'Back', leagues_path, class: "text-blue-600" %>

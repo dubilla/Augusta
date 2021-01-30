@@ -1,0 +1,10 @@
+<h2 class="text-3xl font-bold border-b-2">Leagues</h2>
+<table class="table-minimal table-fixed w-full border-gray-300">
+  <% @leagues.each do |league| %>
+    <tr>
+      <td class="p-2 border-b border-gray-300">
+        <%= link_to league.name, league_path(league) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
