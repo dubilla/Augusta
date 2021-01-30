@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Augusta</title>
+    <%= stylesheet_pack_tag "application" %>
+    <%= javascript_pack_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="outer-container max-w-7xl mx-auto p-8">
+      <div class="container">
+        <div id="notice">
+          <%= notice %>
+        </div>
+
+        <%= yield %>
+
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>
