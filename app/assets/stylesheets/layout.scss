@@ -1,7 +1,0 @@
-.outer-container {
-  @include outer-container;
-  padding: 2em 0;
-  .container {
-    @include span-columns(12);
-  }
-}

@@ -2,10 +2,7 @@ doctype html
 html
   head
     title Augusta
-    - if params['legacy'].present?
-      = stylesheet_link_tag "application", :media => "all"
-    - else
-      = stylesheet_pack_tag "application"
+    = stylesheet_pack_tag "application"
     = javascript_pack_tag "application"
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1"
