@@ -1,0 +1,30 @@
+<header class="navigation bg-green-300 flow-root">
+  <div class="menu-wrapper mx-auto max-w-7xl">
+    <a class="logo float-left pl-4 pr-8 logo" href="javascript:void(0)">
+      <img class="max-h-16 py-3" src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" />
+    </a>
+    <div class="nav float-left mt-3">
+      <ul id="navigation-menu">
+        <li class="nav-link text-gray-200 leading-10">
+          <%= link_to "Leagues", leagues_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="navigation-tools float-right pr-4 mt-3">
+      <% if user_signed_in? %>
+        <div class="signed-in-wrapper">
+          <span class="text">
+            Hi, <%= current_user.first_name %>
+          </span>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "sign-out" %>
+        </div>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "sign-up block p-1 bg-green-200 float-left text-white" %>
+      <div class="sign-in-wrapper float-right mt-1">
+        <span class="text text-white mx-2">or</span>
+        <%= link_to "Sign In", new_user_session_path, class: "sign-in text-white"  %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</header>
