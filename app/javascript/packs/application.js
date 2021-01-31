@@ -16,11 +16,6 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs';
-import '../src/leaderboard/leaderboard.js'
-import '../src/leaderboard/rosters_service.js'
-import '../src/leaderboard/roster_players_service.js'
-import '../src/leaderboard/player_leaderboard_directive.js'
-import '../src/leaderboard/team_leaderboard_directive.js'
 
 import '../src/hooks/useInterval.js';
 import '../src/leaderboard/TeamLeadersApp.jsx';
