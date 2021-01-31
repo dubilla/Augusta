@@ -17,7 +17,6 @@
 
 import Rails from 'rails-ujs';
 
-import '../src/hooks/useInterval.js';
 import '../src/leaderboard/TeamLeadersApp.jsx';
 import '../src/leaderboard/TeamLeaders.jsx';
 import '../src/leaderboard/PlayerLeadersApp.jsx';
