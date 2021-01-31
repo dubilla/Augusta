@@ -21,6 +21,13 @@ import '../src/leaderboard/rosters_service.js'
 import '../src/leaderboard/roster_players_service.js'
 import '../src/leaderboard/player_leaderboard_directive.js'
 import '../src/leaderboard/team_leaderboard_directive.js'
+
+import '../src/hooks/useInterval.js';
+import '../src/leaderboard/TeamLeadersApp.jsx';
+import '../src/leaderboard/TeamLeaders.jsx';
+import '../src/leaderboard/PlayerLeadersApp.jsx';
+import '../src/leaderboard/PlayerLeaders.jsx';
+
 import "../stylesheets/application.css";
 
 Rails.start();
