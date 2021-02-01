@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 function TeamLeaders(props) {
   const [data, setData] = useState({ leaders: [] });
 
-  useEffect(async () => {
+  useEffect(() => {
     async function setLeaders() {
       const response = await axios(
         '/api/v1/rosters?league_tournament_id=' + props.leagueTournamentId
@@ -24,6 +24,7 @@ function TeamLeaders(props) {
       setLeaders,
       60 * 1000
     );
+    setLeaders();
   }, []);
 
   return (
