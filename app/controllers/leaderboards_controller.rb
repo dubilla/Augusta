@@ -1,7 +1,7 @@
 class LeaderboardsController < ApplicationController
 
   def index
-    @league_tournament = LeagueTournament.includes(:league).find(params[:tournament_id])
+    @league_tournament = LeagueTournament.includes(:league, :tournament).find(params[:tournament_id])
 
     respond_to do |format|
       format.html
