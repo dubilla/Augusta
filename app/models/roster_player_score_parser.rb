@@ -7,7 +7,7 @@ class RosterPlayerScoreParser
   end
 
   def score
-    return unless tournament_athlete["score"]
+    return 0 unless tournament_athlete["score"]
     tournament_athlete["score"].to_i
   end
 
