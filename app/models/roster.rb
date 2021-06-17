@@ -12,6 +12,8 @@ class Roster < ActiveRecord::Base
 
   scope :winner, -> { where winner: true }
 
+  accepts_nested_attributes_for :roster_players
+
   def score
     roster_players.map{|p| p.score}.reduce(:+)
   end
