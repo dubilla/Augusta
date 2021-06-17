@@ -3,8 +3,8 @@ ActiveAdmin.register Roster do
 
   form do |f|
     panel "Roster" do
-      f.input :team_id
-      f.input :league_tournament_id
+      f.input :team
+      f.input :league_tournament
     end
     actions
   end
