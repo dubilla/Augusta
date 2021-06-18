@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_013234) do
+ActiveRecord::Schema.define(version: 2021_06_18_011707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,18 +42,30 @@ ActiveRecord::Schema.define(version: 2019_06_01_013234) do
   end
 
   create_table "draft_picks", id: :serial, force: :cascade do |t|
-    t.integer "draft_id", null: false
     t.integer "player_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["draft_id"], name: "index_draft_picks_on_draft_id"
+    t.bigint "draft_slot_id"
+    t.index ["draft_slot_id"], name: "index_draft_picks_on_draft_slot_id"
     t.index ["player_id"], name: "index_draft_picks_on_player_id"
+  end
+
+  create_table "draft_slots", force: :cascade do |t|
+    t.bigint "draft_id"
+    t.bigint "team_id"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["draft_id"], name: "index_draft_slots_on_draft_id"
+    t.index ["team_id"], name: "index_draft_slots_on_team_id"
   end
 
   create_table "drafts", id: :serial, force: :cascade do |t|
     t.integer "league_tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "starts_at"
+    t.datetime "completed_at"
   end
 
   create_table "league_tournaments", id: :serial, force: :cascade do |t|
@@ -93,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_013234) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "league_tournament_id"
-    t.boolean "winner", null: false
+    t.boolean "winner"
   end
 
   create_table "teams", id: :serial, force: :cascade do |t|
@@ -142,6 +154,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_013234) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "draft_picks", "drafts"
+  add_foreign_key "draft_picks", "draft_slots"
   add_foreign_key "draft_picks", "players"
+  add_foreign_key "draft_slots", "drafts"
+  add_foreign_key "draft_slots", "teams"
 end
