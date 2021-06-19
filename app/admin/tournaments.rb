@@ -12,13 +12,14 @@ ActiveAdmin.register Tournament do
 #   permitted
 # end
 
-  permit_params :name, :start_date, :external_id
+  permit_params :name, :start_date, :external_id, :completed
 
   form do |f|
     panel 'Tournament' do
       input :name
       input :start_date
       input :external_id
+      input :completed
     end
     actions
   end
