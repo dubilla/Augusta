@@ -7,8 +7,13 @@ class RosterPlayerThruParser
   end
 
   def thru
-    return unless linescores.present? && round.present? && linescores[round - 1]
+    return unless linescores.present? && round.present? && linescores[round - 1] && linescores[round - 1]["thru"] != 0
     linescores[round - 1]["thru"]
+  end
+
+  def tee_time
+    return unless status.present? && status['state'] == 'pre'
+    status['detail']
   end
 
   private
@@ -16,6 +21,11 @@ class RosterPlayerThruParser
   def linescores
     return unless tournament_athlete.present?
     tournament_athlete["linescores"]
+  end
+
+  def status
+    return unless tournament_athlete.present?
+    tournament_athlete["status"]
   end
 
   def round

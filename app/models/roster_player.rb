@@ -19,7 +19,7 @@ class RosterPlayer < ApplicationRecord
   end
 
   def status
-    thru || "cut"
+    thru || tee_time || "cut"
   end
 
   private
@@ -29,6 +29,14 @@ class RosterPlayer < ApplicationRecord
   end
 
   def thru
-    @thru ||= RosterPlayerThruParser.new(league_tournament.external_id, external_id, league_tournament.completed).thru
+    @thru ||= roster_player_thru_parser.thru
+  end
+
+  def tee_time
+    @tee_time ||= roster_player_thru_parser.tee_time
+  end
+
+  def roster_player_thru_parser
+    @roster_player_thru_parser ||= RosterPlayerThruParser.new(league_tournament.external_id, external_id, league_tournament.completed)
   end
 end
