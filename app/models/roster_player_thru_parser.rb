@@ -1,4 +1,4 @@
-class RosterPlayerThruParser
+class RosterPlayerParser
 
   def initialize tournament_external_id, athlete_external_id, completed
     @tournament_external_id = tournament_external_id

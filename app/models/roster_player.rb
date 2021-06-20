@@ -29,14 +29,14 @@ class RosterPlayer < ApplicationRecord
   end
 
   def thru
-    @thru ||= roster_player_thru_parser.thru
+    @thru ||= roster_player_parser.thru
   end
 
   def tee_time
-    @tee_time ||= roster_player_thru_parser.tee_time
+    @tee_time ||= roster_player_parser.tee_time
   end
 
-  def roster_player_thru_parser
-    @roster_player_thru_parser ||= RosterPlayerThruParser.new(league_tournament.external_id, external_id, league_tournament.completed)
+  def roster_player_parser
+    @roster_player_parser ||= RosterPlayerParser.new(league_tournament.external_id, external_id, league_tournament.completed)
   end
 end
