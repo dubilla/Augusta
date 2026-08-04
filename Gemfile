@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.6.10'
 
 gem 'rails', '~> 5.x'
 gem 'bootsnap'
@@ -44,14 +44,12 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'poltergeist'
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
+  gem 'cuprite'
+  gem 'factory_bot', '~> 5.2'
+  gem 'factory_bot_rails', '~> 5.2'
   gem 'vcr'
   gem 'webmock'
 end
-
-gem 'rails_12factor', group: :production
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

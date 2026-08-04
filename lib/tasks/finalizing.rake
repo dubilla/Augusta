@@ -7,6 +7,6 @@ namespace :finalizing do
     roster_players.each do |rp|
       rp.update(final_score: rp.score)
     end
-    tournament.update_attributes(completed: true)
+    tournament.update(completed: true)
   end
 end

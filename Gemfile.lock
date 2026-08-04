@@ -76,7 +76,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    cliver (0.3.2)
     code_analyzer (0.4.8)
       sexp_processor
     coderay (1.1.2)
@@ -84,6 +83,9 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
+    cuprite (0.14.3)
+      capybara (~> 3.0)
+      ferrum (~> 0.13.0)
     dalli (2.7.10)
     devise (4.6.2)
       bcrypt (~> 3.0)
@@ -95,12 +97,17 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_girl (4.9.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
-      railties (>= 3.0.0)
-    ffi (1.11.1)
+    factory_bot (5.2.0)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
+      railties (>= 4.2.0)
+    ferrum (0.13)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (>= 0.6, < 0.8)
+    ffi (1.16.3)
     formatador (0.2.5)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -205,10 +212,6 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     pg (0.21.0)
-    poltergeist (1.18.1)
-      capybara (>= 2.1, < 4)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -246,9 +249,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_best_practices (1.19.4)
       activesupport
       code_analyzer (>= 0.4.8)
@@ -257,8 +257,6 @@ GEM
       json
       require_all (~> 2.0)
       ruby-progressbar
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.2.4.4)
       actionpack (= 5.2.4.4)
       activesupport (= 5.2.4.4)
@@ -359,6 +357,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    webrick (1.9.2)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -372,24 +371,23 @@ DEPENDENCIES
   activeadmin
   bootsnap
   capybara
+  cuprite
   dalli
   devise
-  factory_girl
-  factory_girl_rails
+  factory_bot (~> 5.2)
+  factory_bot_rails (~> 5.2)
   guard-rspec
   httparty
   jsonapi-rails
   newrelic_rpm
   paper_trail
   pg (< 1.0)
-  poltergeist
   pry
   pry-nav
   pry-remote
   puma
   pundit
   rails (~> 5.x)
-  rails_12factor
   rails_best_practices
   rake
   rspec-rails
@@ -401,4 +399,7 @@ DEPENDENCIES
   webpacker (~> 5.x)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.6.10p210
+
+BUNDLED WITH
+   2.1.4
