@@ -5,6 +5,12 @@ FactoryBot.define do
     end
     password { "password" }
   end
+  factory :admin_user do
+    sequence :email do |n|
+      "admin#{n}@test.com"
+    end
+    password { "password" }
+  end
   factory :league
   factory :team
   factory :league_tournament

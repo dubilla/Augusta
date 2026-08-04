@@ -92,7 +92,9 @@ Each stage ends at a green suite + commit. Bold stages are Heroku-deployable.
 - **Gate:** full RSpec green on 2.6.6 / 5.2.
 
 #### ✅ Stage 0 completed (2026-08-03) — outcome & env notes
-Gate met: **18 examples, 0 failures, 1 pending** (the pending is the empty `admin_user_spec` stub — deferred to Stage 0.1 / Stage-5 cheap-insurance). Ruby pinned to **2.6.10** (system Ruby; 2.6.6 won't build on this Apple Silicon machine) per decision on 2026-08-03.
+Gate met: **18 examples, 0 failures, 1 pending** (the pending was the empty `admin_user_spec` stub). Ruby pinned to **2.6.10** (system Ruby; 2.6.6 won't build on this Apple Silicon machine) per decision on 2026-08-03.
+
+**Stage 0.1 (2026-08-03):** filled the `admin_user_spec` stub with 7 Devise-`:validatable` examples (email presence/uniqueness/case-insensitivity/format, password presence + 8-char floor) + added an `admin_user` factory. Suite now **24 examples, 0 failures, 0 pending** — pulls forward cheap-insurance item #3 below.
 
 Cleanups landed as planned, with two env-forced deviations (both in the plan's spirit):
 - **`factory_bot` pinned `~> 5.2`, not `~> 6`.** factory_bot 6.x uses Ruby-2.7 argument-forwarding syntax (`...`) → hard `SyntaxError` on Ruby 2.6. The `~> 6` bump belongs to a later Ruby stage (≥ Stage 1). factory_bot 5+ also requires block syntax for static attrs — converted `password { "password" }` / `winner { false }` in `spec/factories.rb`.
@@ -179,7 +181,7 @@ The suite is **thin — ~17 examples across 10 files** — which changes what a 
 Converts the two biggest blind spots into automated gates:
 1. **ActiveAdmin smoke spec** — load each of the 6 admin index + filter pages, assert 200. Directly catches the Ransack-4 allowlist breakage the suite is currently blind to.
 2. **One serializer/API request spec** for a representative endpoint.
-3. Fill in or delete the empty `admin_user_spec` — a 0-example file is noise in the baseline.
+3. ✅ **Done in Stage 0.1** — filled the empty `admin_user_spec` with 7 Devise-validation examples (was: a 0-example pending stub).
 
 ### Manual smoke checklist (run at every deployable stage — 4 & 7)
 Because the automated suite can't cover these, run by hand on the review app:
