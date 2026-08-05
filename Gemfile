@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.6.10'
+ruby '2.7.8'
 
 gem 'rails', '~> 5.x'
-gem 'bootsnap'
+gem 'bootsnap', '~> 1.4.8' # >= 1.4.6 required for Ruby 2.7 (LoadedFeaturesIndex fix)
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

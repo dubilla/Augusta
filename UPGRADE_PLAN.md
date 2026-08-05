@@ -112,6 +112,12 @@ Cleanups landed as planned, with two env-forced deviations (both in the plan's s
 - Resolve 2.7 deprecation warnings (mostly keyword-arg separation warnings — fixing them now de-risks Ruby 3.0's hard break).
 - **Gate:** suite green on 2.7.8 / 5.2.
 
+#### ✅ Stage 1 completed (2026-08-04) — outcome & env notes
+- **Ruby 2.6.10 → 2.7.8**, Rails held at 5.2.4.4. Suite: **24 examples, 0 failures**. App boots. Branch `stage-1-ruby-2.7.8`.
+- **One forced gem bump:** `bootsnap 1.4.4 → 1.4.9` (`~> 1.4.8` pin). bootsnap < 1.4.6 hard-crashes on 2.7 boot (`LoadedFeaturesIndex#register`: `no implicit conversion of String into Integer`). Its dep `msgpack` came along `1.2.10 → 1.8.4` (bootsnap-only, no Rails coupling; `--conservative` wouldn't hold the old one).
+- **No app-code 2.7 kwarg-separation warnings.** The only kwarg warnings come from inside `json 2.2.0` (`json/common.rb:156`); the lone Rails deprecation (`secrets.secret_token`) is a **Rails 6.0** removal → Stage 2. Nothing in our code to fix here.
+- **⚠️ Native-gem build wall on 2.7.8 + modern Clang (Xcode/Apple Clang, C23 default):** old C exts fail to compile because `-Wincompatible-function-pointer-types` is now a hard **error** (e.g. `rb_rescue`/`rb_rescue2`/`rb_define_singleton_method` pointer-arity mismatches in pg 0.21.0, jaro_winkler 1.5.2, nio4r 2.5.4, bootsnap). Fix is **local-only** (`.bundle/config`, gitignored — must NOT leak to Heroku): a per-gem `build.<gem>` config appending `--with-cflags=-Wno-incompatible-function-pointer-types` for every native gem (pg additionally keeps `--with-pg-config=…`). Env `CFLAGS` does **not** propagate through mkmf — must use the mkmf `--with-cflags` build arg. Bundler 2.1.4 corrupts `.bundle/config` YAML when `bundle config set` rewrites a hyphenated key (`build.websocket-driver`); hand-write that key as `BUNDLE_BUILD__WEBSOCKET-DRIVER` (hyphen preserved, **not** `___`). This whole workaround shrinks as native gems get bumped in later stages (pg→1.5 at Stage 2, etc.).
+
 ### Stage 2 — Rails 5.2 → 6.0 (Ruby 2.7)
 - `pg` → 1.5, `rails` → 6.0.6.1, AA → 2.14 + its stack (ransack 2.6, formtastic 4, arbre 1.5), devise/pundit/paper_trail/puma/nokogiri per map.
 - Run `bin/rails app:update`; carefully merge `config/`. Adds `new_framework_defaults_6_0.rb` (keep new defaults **off** initially).
