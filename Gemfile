@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.7.8'
 
-gem 'rails', '~> 6.0.6'
+gem 'rails', '~> 6.1.7'
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload; 1.18+ still supports Ruby 2.7
-# concurrent-ruby 1.3.5 dropped its implicit `require 'logger'`, which Rails 6.0's
+# concurrent-ruby 1.3.5 dropped its implicit `require 'logger'`, which Rails 6.x's
 # ActiveSupport relies on -> NameError at boot/asset-compile. Hold < 1.3.5 until the
 # Ruby 3 / Rails 7.1 stage handles it natively. Fixes every entrypoint (incl. bin/webpack).
 gem 'concurrent-ruby', '< 1.3.5'
@@ -29,7 +29,7 @@ gem 'dalli'
 gem 'newrelic_rpm'
 gem 'paper_trail', '~> 12.3'
 gem 'pundit'
-gem 'activeadmin', '~> 2.12.0' # last AA line supporting Rails 6.0 (2.13+ needs 6.1 → Stage 3); ransack < 4, formtastic, arbre
+gem 'activeadmin', '~> 2.14.0' # 2.14 supports Rails 6.1 (Stage 3); still ransack < 4 (Ransack-4 break deferred to Stage 5)
 gem 'jsonapi-rails'
 gem 'puma', '~> 5.6'
 gem 'nokogiri', '~> 1.15.0' # 1.16+ requires Ruby >= 3.0; bump to ~> 1.16 at Stage 7
@@ -41,7 +41,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0' # 3.x raises FactoryBot::WrongScopeError on Rails 6.1 (test_fixtures rework); 4.0 added 6.1 support
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
