@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.7.8'
+ruby '3.1.6'
 
 gem 'rails', '~> 6.1.7'
-gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload; 1.18+ still supports Ruby 2.7
+gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
 # concurrent-ruby 1.3.5 dropped its implicit `require 'logger'`, which Rails 6.x's
 # ActiveSupport relies on -> NameError at boot/asset-compile. Hold < 1.3.5 until the
 # Ruby 3 / Rails 7.1 stage handles it natively. Fixes every entrypoint (incl. bin/webpack).
@@ -38,6 +38,9 @@ group :development do
   gem 'rubocop', require: false
   gem 'rails_best_practices', require: false
   gem 'guard-rspec', require: false
+  # listen 3.1.5 (transitive via guard/railties) pulls ruby_dep, which caps at Ruby ~> 2.2
+  # and blocks resolution on Ruby 3.1. listen dropped ruby_dep in 3.2; pin a modern line.
+  gem 'listen', '~> 3.8'
 end
 
 group :test, :development do
@@ -52,7 +55,7 @@ group :test do
   gem 'cuprite'
   gem 'factory_bot', '~> 5.2'
   gem 'factory_bot_rails', '~> 5.2'
-  gem 'vcr'
+  gem 'vcr', '~> 5.1'
   gem 'webmock'
 end
 
