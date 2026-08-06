@@ -37,6 +37,6 @@ class RosterPlayer < ApplicationRecord
   end
 
   def roster_player_parser
-    @roster_player_parser ||= RosterPlayerParser.new(league_tournament.external_id, external_id, league_tournament.completed)
+    @roster_player_parser ||= RosterPlayerThruParser.new(league_tournament.external_id, external_id, league_tournament.completed)
   end
 end
