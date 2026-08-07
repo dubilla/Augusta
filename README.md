@@ -28,7 +28,7 @@ Augusta (aka "Augusta Peaches") is a lightweight fantasy golf league and live le
 
 - Ruby 2.6.6, Rails 5.x
 - PostgreSQL
-- Webpacker, React 17, Tailwind CSS (PostCSS 7 compat)
+- Shakapacker (webpack 5), React 17, Tailwind CSS (PostCSS 8)
 - Devise, Pundit, PaperTrail, ActiveAdmin
 - Puma web server
 - RSpec for tests
@@ -41,7 +41,7 @@ Augusta (aka "Augusta Peaches") is a lightweight fantasy golf league and live le
   - `TournamentAthleteFetcher` locates athlete rows within the tournament payload
   - `RosterPlayerScoreParser` and `RosterPlayerParser` compute per-player score and status (thru/tee time)
 - Caching: tournament payloads cached via `Rails.cache` with short TTL while in-progress, longer when completed
-- Frontend: React components mounted via Webpacker, polling `/api/v1/rosters` and `/api/v1/roster_players`
+- Frontend: React components mounted via Shakapacker, polling `/api/v1/rosters` and `/api/v1/roster_players`
 
 ## Routes at a glance
 
@@ -59,7 +59,7 @@ Augusta (aka "Augusta Peaches") is a lightweight fantasy golf league and live le
 ### Prerequisites
 
 - Ruby 2.6.6 (rbenv or RVM)
-- Node v14.15.4 and Yarn
+- Node 22 (see `.nvmrc`) and Yarn 1.x
 - PostgreSQL
 
 ### Setup
@@ -89,7 +89,7 @@ This seeds a couple of `Player` records and, in development, an `AdminUser` with
 
 ### Run the app
 
-- Start Rails (Webpacker will compile on-demand in development):
+- Start Rails (Shakapacker will compile on-demand in development):
 
 ```
 bin/rails server
@@ -98,7 +98,7 @@ bin/rails server
 - Optionally, run the webpack dev server in a separate terminal for faster rebuilds:
 
 ```
-bin/webpack-dev-server
+bin/shakapacker-dev-server
 ```
 
 - Visit `http://localhost:3000`
@@ -127,7 +127,7 @@ Responses follow JSON:API via `jsonapi-rails` serializers.
 ## Notes and caveats
 
 - External data is fetched from ESPN (`TournamentDataFetcher`). The API key is currently hard-coded in code for development/demo purposes. In production, move this key to environment configuration and use HTTPS with timeouts and error handling.
-- Some dependencies and configurations are pinned to older versions (Rails 5.x, Webpacker, Node 14). See `TODO.md` for suggested upgrades and fixes.
+- Some dependencies and configurations are pinned to older versions. See `TODO.md` and `UPGRADE_PLAN.md` for the staged upgrade in progress.
 
 ## License
 

@@ -1,72 +1,31 @@
-module.exports = function(api) {
-  var validEnv = ['development', 'test', 'production']
-  var currentEnv = api.env()
-  var isDevelopmentEnv = api.env('development')
-  var isProductionEnv = api.env('production')
-  var isTestEnv = api.env('test')
+module.exports = function (api) {
+  // Shakapacker 8's default babel preset (preset-env + class-properties +
+  // transform-runtime etc.). We layer @babel/preset-react on top for JSX.
+  const defaultConfigFunc = require('shakapacker/package/babel/preset.js')
+  const resultConfig = defaultConfigFunc(api)
+  const isProductionEnv = api.env('production')
 
-  if (!validEnv.includes(currentEnv)) {
-    throw new Error(
-      'Please specify a valid `NODE_ENV` or ' +
-        '`BABEL_ENV` environment variables. Valid values are "development", ' +
-        '"test", and "production". Instead, received: ' +
-        JSON.stringify(currentEnv) +
-        '.'
-    )
+  const reactConfig = {
+    presets: [
+      // Classic runtime — the .jsx files `import React` explicitly (React 17).
+      [
+        '@babel/preset-react',
+        {
+          development: !isProductionEnv,
+          useBuiltIns: true
+        }
+      ]
+    ],
+    plugins: [
+      isProductionEnv && [
+        'babel-plugin-transform-react-remove-prop-types',
+        { removeImport: true }
+      ]
+    ].filter(Boolean)
   }
 
   return {
-    presets: [
-      isTestEnv && [
-        require('@babel/preset-env').default,
-        {
-          targets: {
-            node: 'current'
-          }
-        }
-      ],
-      (isProductionEnv || isDevelopmentEnv) && [
-        require('@babel/preset-env').default,
-        {
-          forceAllTransforms: true,
-          useBuiltIns: 'entry',
-          modules: false,
-          exclude: ['transform-typeof-symbol']
-        }
-      ],
-      require("@babel/preset-react")
-    ].filter(Boolean),
-    plugins: [
-      require("@babel/plugin-transform-react-jsx"),
-      require('babel-plugin-macros'),
-      require('@babel/plugin-syntax-dynamic-import').default,
-      isTestEnv && require('babel-plugin-dynamic-import-node'),
-      require('@babel/plugin-transform-destructuring').default,
-      [
-        require('@babel/plugin-proposal-class-properties').default,
-        {
-          loose: true
-        }
-      ],
-      [
-        require('@babel/plugin-proposal-object-rest-spread').default,
-        {
-          useBuiltIns: true
-        }
-      ],
-      [
-        require('@babel/plugin-transform-runtime').default,
-        {
-          helpers: false,
-          regenerator: true
-        }
-      ],
-      [
-        require('@babel/plugin-transform-regenerator').default,
-        {
-          async: false
-        }
-      ]
-    ].filter(Boolean)
+    presets: [...resultConfig.presets, ...reactConfig.presets],
+    plugins: [...resultConfig.plugins, ...reactConfig.plugins]
   }
 }
