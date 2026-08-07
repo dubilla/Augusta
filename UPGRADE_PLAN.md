@@ -172,7 +172,7 @@ The suite is **thin — ~17 examples across 10 files** — which changes what a 
 | **JSON API / serializers** | ❌ none (despite jsonapi-rails + 2 serializers) |
 | Controllers / requests / system | ❌ none |
 | Auth (devise) | ❌ only implicit via page renders |
-| CI | `.travis.yml` only — **Travis is dead**, so there is effectively no running CI |
+| CI | **none** — Travis is dead; the stale `.travis.yml` (Ruby 2.6.10 / PG 9.5, never ran the specs) was removed. No running CI. |
 
 **What "a build" is worth here (~70%), and why:** because the suite is this thin, most upgrade breakage is **load-time** — gem incompatibilities, Zeitwerk autoload errors, deprecated-API-at-boot, asset/webpack compile failures — which `bundle` + boot + `assets:precompile` + the 17 specs will catch. There aren't enough behavioral tests for subtle regressions to hide behind.
 
