@@ -20,7 +20,12 @@ gem 'sass-rails', '~> 6.0' # wraps sassc; drops EOL ruby-sass
 # gem 'therubyracer', :platforms => :ruby
 
 gem 'uglifier', '>= 1.0.3'
-gem 'webpacker', '~> 5.x'
+# Stage 5a: webpacker → shakapacker (webpack 5, dart-sass). Drops @rails/webpacker 5
+# (last thing pulling node-sass 4) → lets Heroku return to a supported Node (was pinned
+# to Node 14 for node-sass/webpack-4). shakapacker 8 runs on Rails 6.1+ and Node 14–22.
+# Pinned exact and kept in lockstep with the npm `shakapacker` (see package.json)
+# — shakapacker.yml `ensure_consistent_versioning` fails the build if they drift.
+gem 'shakapacker', '8.4.0'
 
 gem 'devise', '~> 4.8'
 gem 'rake'

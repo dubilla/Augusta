@@ -1,20 +1,27 @@
-# Note: You must restart bin/webpack-dev-server for changes to take effect
+# Note: You must restart bin/shakapacker-dev-server for changes to take effect
 
 default: &default
   source_path: app/javascript
   source_entry_path: packs
+  nested_entries: false
+  css_extract_ignore_order_warnings: false
+
+  # Fail the build if the shakapacker gem and npm package versions drift apart.
+  ensure_consistent_versioning: true
   public_root_path: public
   public_output_path: packs
-  cache_path: tmp/cache/webpacker
-  check_yarn_integrity: false
-  webpack_compile_output: false
+  cache_path: tmp/shakapacker
+  webpack_compile_output: true
 
-  # Additional paths webpack should lookup modules
+  # Additional paths webpack should look up modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: []
+  additional_paths: []
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
+
+  # Select loader to use, available options are 'babel' (default), 'swc' or 'esbuild'
+  webpack_loader: 'babel'
 
   # Extract and emit a css file
   extract_css: true
@@ -53,28 +60,15 @@ development:
   <<: *default
   compile: true
 
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-  check_yarn_integrity: true
-
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
-    https: false
+    hmr: false
+    server: http
     host: localhost
     port: 3035
-    public: localhost:3035
-    hmr: false
-    # Inline should be set to true if using HMR
-    inline: true
-    overlay: true
-    compress: true
-    disable_host_check: true
-    use_local_ip: false
-    quiet: false
-    headers:
-      'Access-Control-Allow-Origin': '*'
-    watch_options:
-      ignored: '**/node_modules/**'
-
+    static:
+      watch:
+        ignored: '**/node_modules/**'
 
 test:
   <<: *default
