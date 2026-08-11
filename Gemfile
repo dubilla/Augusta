@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.1.6'
 
-gem 'rails', '~> 6.1.7'
+gem 'rails', '~> 7.0.8' # Stage 5c: 6.1 → 7.0 (load_defaults 7.0, Zeitwerk-only)
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
 # concurrent-ruby 1.3.5 dropped its implicit `require 'logger'`, which Rails 6.x's
 # ActiveSupport relies on -> NameError at boot/asset-compile. Hold < 1.3.5 until the
@@ -19,7 +19,9 @@ gem 'sass-rails', '~> 6.0' # wraps sassc; drops EOL ruby-sass
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-gem 'uglifier', '>= 1.0.3'
+# terser replaces uglifier (ES5-only) for sprockets JS minification — ActiveAdmin 3.5
+# ships ES6 (`const`) that uglifier can't parse. terser is the Rails 7 default.
+gem 'terser', '~> 1.2'
 # Stage 5a: webpacker → shakapacker (webpack 5, dart-sass). Drops @rails/webpacker 5
 # (last thing pulling node-sass 4) → lets Heroku return to a supported Node (was pinned
 # to Node 14 for node-sass/webpack-4). shakapacker 8 runs on Rails 6.1+ and Node 14–22.
@@ -56,7 +58,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 4.0' # 3.x raises FactoryBot::WrongScopeError on Rails 6.1 (test_fixtures rework); 4.0 added 6.1 support
+  gem 'rspec-rails', '~> 6.1' # 4.x caps at Rails 6.1; 6.x supports Rails 6.1–7.1 (Stage 5c)
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
