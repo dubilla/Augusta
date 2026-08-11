@@ -14,6 +14,15 @@ class Roster < ActiveRecord::Base
 
   accepts_nested_attributes_for :roster_players
 
+  # Ransack 4 allowlist for ActiveAdmin filtering/sorting.
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id team_id league_tournament_id winner created_at updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[team league_tournament roster_players players]
+  end
+
   def score
     roster_players.map{|p| p.score}.reduce(:+)
   end

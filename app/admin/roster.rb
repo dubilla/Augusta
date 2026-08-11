@@ -1,6 +1,9 @@
 ActiveAdmin.register Roster do
   permit_params :team_id, :league_tournament_id, :winner, roster_players_attributes: [:id, :player_id]
 
+  # See league_tournaments.rb — drop PaperTrail's auto-generated `versions` filter.
+  remove_filter :versions
+
   form do |f|
     panel "Roster" do
       f.input :team

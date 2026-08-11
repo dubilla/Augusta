@@ -14,4 +14,13 @@ class LeagueTournament < ApplicationRecord
 
   scope :active, -> { joins(:tournament).merge(Tournament.active) }
 
+  # Ransack 4 allowlist for ActiveAdmin filtering/sorting.
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id league_id tournament_id created_at updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[league tournament rosters roster_players]
+  end
+
 end
