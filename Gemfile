@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 
 ruby '3.1.6'
 
-gem 'rails', '~> 7.0.8' # Stage 5c: 6.1 → 7.0 (load_defaults 7.0, Zeitwerk-only)
+gem 'rails', '~> 7.1.5' # Stage 6: 7.0 → 7.1 (load_defaults 7.1)
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
-# concurrent-ruby 1.3.5 dropped its implicit `require 'logger'`, which Rails 6.x's
-# ActiveSupport relies on -> NameError at boot/asset-compile. Hold < 1.3.5 until the
-# Ruby 3 / Rails 7.1 stage handles it natively. Fixes every entrypoint (incl. bin/webpack).
-gem 'concurrent-ruby', '< 1.3.5'
+# (Stage 6) The concurrent-ruby < 1.3.5 pin is lifted at Rails 7.1 — 7.1's ActiveSupport
+# requires 'logger' itself, so the old NameError at boot/asset-compile no longer applies.
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -34,7 +32,7 @@ gem 'rake'
 gem 'httparty'
 gem 'dalli'
 gem 'newrelic_rpm'
-gem 'paper_trail', '~> 12.3'
+gem 'paper_trail', '~> 15.1' # Stage 6: 12.3 → 15.x for Rails 7.1
 gem 'pundit'
 # Stage 5b: AA 2.14 → 3.x (latest stable 3-line; railties >= 6.1, so it spans this
 # Rails 6.1 stage and the 7.0 bump in 5c). AA 3 requires Ransack 4 (pinned below).
@@ -45,7 +43,7 @@ gem 'activeadmin', '~> 3.5'
 # security-sensitive item; the float lets 5c pick up any 4.x fixes on Rails 7.
 gem 'ransack', '~> 4.1'
 gem 'jsonapi-rails'
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.4' # Stage 6: 5.6 → 6.x for Rails 7.1
 gem 'nokogiri', '~> 1.15.0' # 1.16+ requires Ruby >= 3.0; bump to ~> 1.16 at Stage 7
 
 group :development do
