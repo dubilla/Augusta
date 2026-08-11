@@ -14,6 +14,9 @@ ActiveAdmin.register Tournament do
 
   permit_params :name, :start_date, :external_id, :completed
 
+  # See league_tournaments.rb — drop PaperTrail's auto-generated `versions` filter.
+  remove_filter :versions
+
   form do |f|
     panel 'Tournament' do
       input :name

@@ -14,6 +14,15 @@ class RosterPlayer < ApplicationRecord
 
   scope :winner, -> { where winner: true }
 
+  # Ransack 4 allowlist for ActiveAdmin filtering/sorting.
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id roster_id player_id winner final_score created_at updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[roster player]
+  end
+
   def score
     tournament_athlete_score || 0
   end

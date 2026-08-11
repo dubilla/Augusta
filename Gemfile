@@ -34,7 +34,14 @@ gem 'dalli'
 gem 'newrelic_rpm'
 gem 'paper_trail', '~> 12.3'
 gem 'pundit'
-gem 'activeadmin', '~> 2.14.0' # 2.14 supports Rails 6.1 (Stage 3); still ransack < 4 (Ransack-4 break deferred to Stage 5)
+# Stage 5b: AA 2.14 → 3.x (latest stable 3-line; railties >= 6.1, so it spans this
+# Rails 6.1 stage and the 7.0 bump in 5c). AA 3 requires Ransack 4 (pinned below).
+gem 'activeadmin', '~> 3.5'
+# Ransack 4 requires every AA-exposed model to allowlist searchable attrs/assocs via
+# ransackable_attributes/ransackable_associations (see app/models/*), else index pages
+# raise at query time. Declared explicitly (floor ~> 4.1) since it's the
+# security-sensitive item; the float lets 5c pick up any 4.x fixes on Rails 7.
+gem 'ransack', '~> 4.1'
 gem 'jsonapi-rails'
 gem 'puma', '~> 5.6'
 gem 'nokogiri', '~> 1.15.0' # 1.16+ requires Ruby >= 3.0; bump to ~> 1.16 at Stage 7

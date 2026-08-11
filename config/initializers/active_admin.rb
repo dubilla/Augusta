@@ -157,7 +157,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = [:encrypted_password, :password, :password_confirmation, :reset_password_token, :reset_password_sent_at]
 
   # == Localize Date/Time Format
   #
