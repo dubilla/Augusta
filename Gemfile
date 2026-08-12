@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.1.6'
+ruby '3.3.11'
 
 gem 'rails', '~> 7.1.5' # Stage 6: 7.0 → 7.1 (load_defaults 7.1)
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
@@ -30,7 +30,6 @@ gem 'shakapacker', '8.4.0'
 gem 'devise', '~> 4.8'
 gem 'rake'
 gem 'httparty'
-gem 'dalli'
 gem 'newrelic_rpm'
 gem 'paper_trail', '~> 15.1' # Stage 6: 12.3 → 15.x for Rails 7.1
 gem 'pundit'
@@ -44,7 +43,7 @@ gem 'activeadmin', '~> 3.5'
 gem 'ransack', '~> 4.1'
 gem 'jsonapi-rails'
 gem 'puma', '~> 6.4' # Stage 6: 5.6 → 6.x for Rails 7.1
-gem 'nokogiri', '~> 1.15.0' # 1.16+ requires Ruby >= 3.0; bump to ~> 1.16 at Stage 7
+gem 'nokogiri', '~> 1.16' # Stage 7: 1.15.x has no Ruby 3.3 build; 1.16+ required
 
 group :development do
   gem 'rubocop', require: false
@@ -57,9 +56,10 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 6.1' # 4.x caps at Rails 6.1; 6.x supports Rails 6.1–7.1 (Stage 5c)
-  gem 'pry'
-  gem 'pry-remote'
-  gem 'pry-nav'
+  # Stage 7: pry 0.12 breaks on Ruby 3.3 (uses the removed Object#=~). Bumped to 0.14; the
+  # abandoned pry-remote (2013) / pry-nav (2019) were dropped — pry-byebug is the modern
+  # step-debugging replacement if wanted.
+  gem 'pry', '~> 0.14'
 end
 
 group :test do
