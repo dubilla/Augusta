@@ -21,7 +21,4 @@ latest.dump
 /public/packs-test
 /public/assets
 /node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
 /vendor/bundle

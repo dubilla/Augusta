@@ -58,8 +58,8 @@ Augusta (aka "Augusta Peaches") is a lightweight fantasy golf league and live le
 
 ### Prerequisites
 
-- Ruby 2.6.6 (rbenv or RVM)
-- Node 22 (see `.nvmrc`) and Yarn 1.x
+- Ruby 3.3.11 (see `.ruby-version`)
+- Node 22 (see `.nvmrc`) and pnpm 12 (`npm i -g pnpm@12` or `corepack enable`)
 - PostgreSQL
 
 ### Setup
@@ -73,7 +73,7 @@ bundle install
 2. Install JavaScript packages:
 
 ```
-yarn install
+pnpm install
 ```
 
 3. Configure database:
