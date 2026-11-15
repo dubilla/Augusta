@@ -2,13 +2,19 @@ source 'https://rubygems.org'
 
 ruby '3.3.13'
 
-gem 'rails', '~> 7.1.5' # Stage 6: 7.0 → 7.1 (load_defaults 7.1)
+# Rails components, not the `rails` meta-gem (keeps unused Active Storage etc.
+# out of the bundle). Bump all eight together.
+gem 'actionmailer', '~> 7.1.5'
+gem 'actionpack', '~> 7.1.5'
+gem 'actionview', '~> 7.1.5'
+gem 'activejob', '~> 7.1.5'
+gem 'activemodel', '~> 7.1.5'
+gem 'activerecord', '~> 7.1.5'
+gem 'activesupport', '~> 7.1.5'
+gem 'railties', '~> 7.1.5'
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
 # (Stage 6) The concurrent-ruby < 1.3.5 pin is lifted at Rails 7.1 — 7.1's ActiveSupport
 # requires 'logger' itself, so the old NameError at boot/asset-compile no longer applies.
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', '~> 1.5' # Rails 6 requires pg >= 1.1
 

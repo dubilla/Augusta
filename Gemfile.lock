@@ -1,22 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.1.6)
-      actionpack (= 7.1.6)
-      activesupport (= 7.1.6)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-      zeitwerk (~> 2.6)
-    actionmailbox (7.1.6)
-      actionpack (= 7.1.6)
-      activejob (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
-      mail (>= 2.7.1)
-      net-imap
-      net-pop
-      net-smtp
     actionmailer (7.1.6)
       actionpack (= 7.1.6)
       actionview (= 7.1.6)
@@ -38,13 +22,6 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actiontext (7.1.6)
-      actionpack (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
-      globalid (>= 0.6.0)
-      nokogiri (>= 1.8.5)
     actionview (7.1.6)
       activesupport (= 7.1.6)
       builder (~> 3.1)
@@ -71,12 +48,6 @@ GEM
       activemodel (= 7.1.6)
       activesupport (= 7.1.6)
       timeout (>= 0.4.0)
-    activestorage (7.1.6)
-      actionpack (= 7.1.6)
-      activejob (= 7.1.6)
-      activerecord (= 7.1.6)
-      activesupport (= 7.1.6)
-      marcel (~> 1.0)
     activesupport (7.1.6)
       base64
       benchmark (>= 0.3)
@@ -237,7 +208,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.2.1)
     matrix (0.4.3)
     method_source (1.1.0)
     mime-types (3.7.0)
@@ -308,20 +278,6 @@ GEM
       rack (>= 1.3)
     rackup (2.3.1)
       rack (>= 3)
-    rails (7.1.6)
-      actioncable (= 7.1.6)
-      actionmailbox (= 7.1.6)
-      actionmailer (= 7.1.6)
-      actionpack (= 7.1.6)
-      actiontext (= 7.1.6)
-      actionview (= 7.1.6)
-      activejob (= 7.1.6)
-      activemodel (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
-      bundler (>= 1.15.0)
-      railties (= 7.1.6)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -459,7 +415,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actionmailer (~> 7.1.5)
+  actionpack (~> 7.1.5)
+  actionview (~> 7.1.5)
   activeadmin (~> 3.5)
+  activejob (~> 7.1.5)
+  activemodel (~> 7.1.5)
+  activerecord (~> 7.1.5)
+  activesupport (~> 7.1.5)
   bootsnap (~> 1.18)
   capybara
   cuprite
@@ -477,8 +440,8 @@ DEPENDENCIES
   pry (~> 0.14)
   puma (~> 7.2)
   pundit
-  rails (~> 7.1.5)
   rails_best_practices
+  railties (~> 7.1.5)
   rake
   ransack (~> 4.1)
   rspec-rails (~> 6.1)
