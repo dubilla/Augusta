@@ -36,6 +36,7 @@ gem 'shakapacker', '9.5.0'
 gem 'devise', '~> 5.0'
 gem 'rake'
 gem 'httparty'
+gem 'mailgun-ruby', '~> 1.4'
 gem 'newrelic_rpm'
 gem 'paper_trail', '~> 15.1' # Stage 6: 12.3 → 15.x for Rails 7.1
 gem 'pundit'

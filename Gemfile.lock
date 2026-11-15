@@ -116,6 +116,14 @@ GEM
     factory_bot_rails (5.2.0)
       factory_bot (~> 5.2.0)
       railties (>= 4.2.0)
+    faraday (2.15.1)
+      faraday-net_http (>= 2.0, < 3.6)
+      json
+      logger
+    faraday-multipart (1.2.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (3.5.0)
+      net-http (~> 0.5)
     ferrum (0.17.2)
       addressable (~> 2.5)
       base64 (~> 0.2)
@@ -209,6 +217,11 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mailgun-ruby (1.4.6)
+      faraday (~> 2.1)
+      faraday-multipart (< 2)
+      mini_mime
+      zeitwerk
     matrix (0.4.3)
     method_source (1.1.0)
     mini_mime (1.1.5)
@@ -216,8 +229,11 @@ GEM
     minitest (5.27.0)
     msgpack (1.8.7)
     multi_xml (0.6.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
     nenv (0.3.0)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
     net-imap (0.5.15)
       date
       net-protocol
@@ -391,6 +407,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.6.0)
+    uri (1.1.2)
     vcr (5.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -430,6 +447,7 @@ DEPENDENCIES
   httparty
   jsonapi-rails
   listen (~> 3.8)
+  mailgun-ruby (~> 1.4)
   newrelic_rpm
   nokogiri (~> 1.16)
   paper_trail (~> 15.1)
