@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { render } from 'react-dom';
 
 function TeamLeaders(props) {
@@ -7,11 +6,13 @@ function TeamLeaders(props) {
 
   useEffect(() => {
     async function setLeaders() {
-      const response = await axios(
+      const response = await fetch(
         '/api/v1/rosters?league_tournament_id=' + props.leagueTournamentId
       );
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const json = await response.json();
       setData({
-        leaders: response.data.data.map(function(team) {
+        leaders: json.data.map(function(team) {
           return {
             id: team.id,
             name: team.attributes.name,
