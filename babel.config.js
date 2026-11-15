@@ -1,5 +1,5 @@
 module.exports = function (api) {
-  // Shakapacker 8's default babel preset (preset-env + class-properties +
+  // Shakapacker's default babel preset (preset-env + class-properties +
   // transform-runtime etc.). We layer @babel/preset-react on top for JSX.
   const defaultConfigFunc = require('shakapacker/package/babel/preset.js')
   const resultConfig = defaultConfigFunc(api)
