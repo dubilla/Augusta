@@ -1,32 +1,29 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (7.2.4)
-      actionpack (= 7.2.4)
-      actionview (= 7.2.4)
-      activejob (= 7.2.4)
-      activesupport (= 7.2.4)
+    actionmailer (8.0.5.2)
+      actionpack (= 8.0.5.2)
+      actionview (= 8.0.5.2)
+      activejob (= 8.0.5.2)
+      activesupport (= 8.0.5.2)
       mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (7.2.4)
-      actionview (= 7.2.4)
-      activesupport (= 7.2.4)
-      cgi
+    actionpack (8.0.5.2)
+      actionview (= 8.0.5.2)
+      activesupport (= 8.0.5.2)
       nokogiri (>= 1.8.5)
-      racc
-      rack (>= 2.2.4, < 3.3)
+      rack (>= 2.2.4)
       rack-session (>= 1.0.1)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
       useragent (~> 0.16)
-    actionview (7.2.4)
-      activesupport (= 7.2.4)
+    actionview (8.0.5.2)
+      activesupport (= 8.0.5.2)
       builder (~> 3.1)
-      cgi
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
-      rails-html-sanitizer (~> 1.6)
+      rails-html-sanitizer (~> 1.6, >= 1.7.2)
     activeadmin (3.5.2)
       arbre (~> 1.2, >= 1.2.1)
       csv
@@ -37,27 +34,28 @@ GEM
       kaminari (>= 1.2.1)
       railties (>= 6.1)
       ransack (>= 4.0)
-    activejob (7.2.4)
-      activesupport (= 7.2.4)
+    activejob (8.0.5.2)
+      activesupport (= 8.0.5.2)
       globalid (>= 0.3.6)
-    activemodel (7.2.4)
-      activesupport (= 7.2.4)
-    activerecord (7.2.4)
-      activemodel (= 7.2.4)
-      activesupport (= 7.2.4)
+    activemodel (8.0.5.2)
+      activesupport (= 8.0.5.2)
+    activerecord (8.0.5.2)
+      activemodel (= 8.0.5.2)
+      activesupport (= 8.0.5.2)
       timeout (>= 0.4.0)
-    activesupport (7.2.4)
+    activesupport (8.0.5.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.3.1)
-      connection_pool (>= 2.2.5, < 3)
+      connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
       logger (>= 1.4.2)
-      minitest (>= 5.1, < 6)
+      minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
+      uri (>= 0.13.1)
     addressable (2.9.2)
       public_suffix (>= 2.0.2, < 8.0)
     arbre (1.7.0)
@@ -80,12 +78,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.5.2)
     code_analyzer (0.4.8)
       sexp_processor
     coderay (1.1.3)
     concurrent-ruby (1.3.8)
-    connection_pool (2.5.5)
+    connection_pool (3.0.2)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -251,8 +248,8 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     package_json (0.2.0)
-    paper_trail (15.2.0)
-      activerecord (>= 6.1)
+    paper_trail (17.0.0)
+      activerecord (>= 7.1)
       request_store (~> 1.4)
     parallel (1.17.0)
     parser (2.6.3.0)
@@ -299,10 +296,9 @@ GEM
       json
       require_all (~> 2.0)
       ruby-progressbar
-    railties (7.2.4)
-      actionpack (= 7.2.4)
-      activesupport (= 7.2.4)
-      cgi
+    railties (8.0.5.2)
+      actionpack (= 8.0.5.2)
+      activesupport (= 8.0.5.2)
       irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
@@ -427,14 +423,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  actionmailer (~> 7.2.4)
-  actionpack (~> 7.2.4)
-  actionview (~> 7.2.4)
+  actionmailer (~> 8.0.5, >= 8.0.5.2)
+  actionpack (~> 8.0.5, >= 8.0.5.2)
+  actionview (~> 8.0.5, >= 8.0.5.2)
   activeadmin (~> 3.5)
-  activejob (~> 7.2.4)
-  activemodel (~> 7.2.4)
-  activerecord (~> 7.2.4)
-  activesupport (~> 7.2.4)
+  activejob (~> 8.0.5, >= 8.0.5.2)
+  activemodel (~> 8.0.5, >= 8.0.5.2)
+  activerecord (~> 8.0.5, >= 8.0.5.2)
+  activesupport (~> 8.0.5, >= 8.0.5.2)
   bootsnap (~> 1.18)
   capybara
   cuprite
@@ -448,13 +444,13 @@ DEPENDENCIES
   mailgun-ruby (~> 1.4)
   newrelic_rpm
   nokogiri (~> 1.16)
-  paper_trail (~> 15.1)
+  paper_trail (~> 17.0)
   pg (~> 1.5)
   pry (~> 0.14)
   puma (~> 7.2)
   pundit
   rails_best_practices
-  railties (~> 7.2.4)
+  railties (~> 8.0.5, >= 8.0.5.2)
   rake
   ransack (~> 4.1)
   rspec-rails (~> 6.1)

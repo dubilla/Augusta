@@ -15,7 +15,7 @@ Bundler.require(*Rails.groups)
 module Augusta
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     # 7.2 turns YJIT on; set DISABLE_YJIT on a memory-tight dyno to opt out without a deploy.
     config.yjit = ENV['DISABLE_YJIT'].blank?
