@@ -27,7 +27,7 @@ gem 'terser', '~> 1.2'
 # — shakapacker.yml `ensure_consistent_versioning` fails the build if they drift.
 gem 'shakapacker', '8.4.0'
 
-gem 'devise', '~> 4.8'
+gem 'devise', '~> 5.0'
 gem 'rake'
 gem 'httparty'
 gem 'newrelic_rpm'
