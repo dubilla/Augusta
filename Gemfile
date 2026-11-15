@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.3.11'
+ruby '3.3.13'
 
 gem 'rails', '~> 7.1.5' # Stage 6: 7.0 → 7.1 (load_defaults 7.1)
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
@@ -42,7 +42,7 @@ gem 'activeadmin', '~> 3.5'
 # security-sensitive item; the float lets 5c pick up any 4.x fixes on Rails 7.
 gem 'ransack', '~> 4.1'
 gem 'jsonapi-rails'
-gem 'puma', '~> 6.4' # Stage 6: 5.6 → 6.x for Rails 7.1
+gem 'puma', '~> 7.2'
 gem 'nokogiri', '~> 1.16' # Stage 7: 1.15.x has no Ruby 3.3 build; 1.16+ required
 
 group :development do
