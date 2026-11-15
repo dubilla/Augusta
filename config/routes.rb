@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :leagues do
     resources :teams
     resources :league_tournaments, path: "tournaments", as: "tournaments" do
-      resources :leaderboards, path: "leaderboard"
+      resources :leaderboards, path: "leaderboard", only: :index
     end
   end
 

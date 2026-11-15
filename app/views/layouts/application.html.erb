@@ -14,6 +14,11 @@
         <div id="notice">
           <%= notice %>
         </div>
+        <% if alert.present? %>
+          <div id="alert" class="p-2 mb-4 bg-red-100 border border-red-400 text-red-700">
+            <%= alert %>
+          </div>
+        <% end %>
 
         <%= yield %>
 
