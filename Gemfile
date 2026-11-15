@@ -4,14 +4,14 @@ ruby '3.3.13'
 
 # Rails components, not the `rails` meta-gem (keeps unused Active Storage etc.
 # out of the bundle). Bump all eight together.
-gem 'actionmailer', '~> 7.2.4'
-gem 'actionpack', '~> 7.2.4'
-gem 'actionview', '~> 7.2.4'
-gem 'activejob', '~> 7.2.4'
-gem 'activemodel', '~> 7.2.4'
-gem 'activerecord', '~> 7.2.4'
-gem 'activesupport', '~> 7.2.4'
-gem 'railties', '~> 7.2.4'
+gem 'actionmailer', '~> 8.0.5', '>= 8.0.5.2'
+gem 'actionpack', '~> 8.0.5', '>= 8.0.5.2'
+gem 'actionview', '~> 8.0.5', '>= 8.0.5.2'
+gem 'activejob', '~> 8.0.5', '>= 8.0.5.2'
+gem 'activemodel', '~> 8.0.5', '>= 8.0.5.2'
+gem 'activerecord', '~> 8.0.5', '>= 8.0.5.2'
+gem 'activesupport', '~> 8.0.5', '>= 8.0.5.2'
+gem 'railties', '~> 8.0.5', '>= 8.0.5.2'
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
 # (Stage 6) The concurrent-ruby < 1.3.5 pin is lifted at Rails 7.1 — 7.1's ActiveSupport
 # requires 'logger' itself, so the old NameError at boot/asset-compile no longer applies.
@@ -38,7 +38,7 @@ gem 'rake'
 gem 'httparty'
 gem 'mailgun-ruby', '~> 1.4'
 gem 'newrelic_rpm'
-gem 'paper_trail', '~> 15.1' # Stage 6: 12.3 → 15.x for Rails 7.1
+gem 'paper_trail', '~> 17.0'
 gem 'pundit'
 # Stage 5b: AA 2.14 → 3.x (latest stable 3-line; railties >= 6.1, so it spans this
 # Rails 6.1 stage and the 7.0 bump in 5c). AA 3 requires Ransack 4 (pinned below).
