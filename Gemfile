@@ -4,14 +4,14 @@ ruby '3.3.13'
 
 # Rails components, not the `rails` meta-gem (keeps unused Active Storage etc.
 # out of the bundle). Bump all eight together.
-gem 'actionmailer', '~> 7.1.5'
-gem 'actionpack', '~> 7.1.5'
-gem 'actionview', '~> 7.1.5'
-gem 'activejob', '~> 7.1.5'
-gem 'activemodel', '~> 7.1.5'
-gem 'activerecord', '~> 7.1.5'
-gem 'activesupport', '~> 7.1.5'
-gem 'railties', '~> 7.1.5'
+gem 'actionmailer', '~> 7.2.4'
+gem 'actionpack', '~> 7.2.4'
+gem 'actionview', '~> 7.2.4'
+gem 'activejob', '~> 7.2.4'
+gem 'activemodel', '~> 7.2.4'
+gem 'activerecord', '~> 7.2.4'
+gem 'activesupport', '~> 7.2.4'
+gem 'railties', '~> 7.2.4'
 gem 'bootsnap', '~> 1.18' # 1.4.x breaks on Rails 6 activesupport autoload
 # (Stage 6) The concurrent-ruby < 1.3.5 pin is lifted at Rails 7.1 — 7.1's ActiveSupport
 # requires 'logger' itself, so the old NameError at boot/asset-compile no longer applies.
@@ -62,7 +62,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 6.1' # 4.x caps at Rails 6.1; 6.x supports Rails 6.1–7.1 (Stage 5c)
+  gem 'rspec-rails', '~> 6.1'
   # Stage 7: pry 0.12 breaks on Ruby 3.3 (uses the removed Object#=~). Bumped to 0.14; the
   # abandoned pry-remote (2013) / pry-nav (2019) were dropped — pry-byebug is the modern
   # step-debugging replacement if wanted.
