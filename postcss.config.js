@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     // postcss-import must run first so `@import "tailwindcss/base"` etc. are
-    // inlined before webpack's css-loader tries to resolve them as modules.
+    // inlined before css-loader tries to resolve them as modules.
     require('postcss-import'),
     require('tailwindcss'),
     // autoprefixer is applied by postcss-preset-env below (configured via its

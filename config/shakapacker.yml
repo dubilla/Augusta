@@ -20,8 +20,9 @@ default: &default
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
-  # Select loader to use, available options are 'babel' (default), 'swc' or 'esbuild'
-  javascript_transpiler: 'babel'
+  # rspack always transpiles with its built-in SWC loader (targets set in config/rspack/rspack.config.js)
+  assets_bundler: rspack
+  javascript_transpiler: swc
 
   # Extract and emit a css file
   extract_css: true

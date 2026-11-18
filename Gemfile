@@ -26,9 +26,9 @@ gem 'sass-rails', '~> 6.0' # wraps sassc; drops EOL ruby-sass
 # terser replaces uglifier (ES5-only) for sprockets JS minification — ActiveAdmin 3.5
 # ships ES6 (`const`) that uglifier can't parse. terser is the Rails 7 default.
 gem 'terser', '~> 1.2'
-# Stage 5a: webpacker → shakapacker (webpack 5, dart-sass). Drops @rails/webpacker 5
+# Stage 5a: webpacker → shakapacker. Drops @rails/webpacker 5
 # (last thing pulling node-sass 4) → lets Heroku return to a supported Node (was pinned
-# to Node 14 for node-sass/webpack-4). shakapacker 10 (Babel transpiler kept, see shakapacker.yml).
+# to Node 14 for node-sass/webpack-4). shakapacker 10 on rspack 2 + SWC (see shakapacker.yml).
 # Pinned exact and kept in lockstep with the npm `shakapacker` (see package.json)
 # — shakapacker.yml `ensure_consistent_versioning` fails the build if they drift.
 gem 'shakapacker', '10.3.2'
