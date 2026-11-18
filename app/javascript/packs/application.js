@@ -18,9 +18,7 @@
 import Rails from 'rails-ujs';
 
 import '../src/leaderboard/TeamLeadersApp.jsx';
-import '../src/leaderboard/TeamLeaders.jsx';
 import '../src/leaderboard/PlayerLeadersApp.jsx';
-import '../src/leaderboard/PlayerLeaders.jsx';
 
 import "../stylesheets/application.css";
 
