@@ -19,5 +19,7 @@ FactoryBot.define do
     winner { false }
   end
   factory :roster_player
-  factory :player
+  factory :player do
+    sequence(:external_id) { |n| 1_000_000 + n } # clear of seeded players' ESPN ids
+  end
 end

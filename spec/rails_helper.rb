@@ -12,8 +12,7 @@ require 'support/vcr'
 
 # cuprite auto-registers a bare :cuprite driver on require; we override it to
 # preserve the strictness poltergeist gave us (JS errors fail the spec) and pin
-# a window size. No js: true specs exist yet — this readies the driver for the
-# ActiveAdmin/React specs added at Stage 5.
+# a window size.
 Capybara.register_driver(:cuprite) do |app|
   Capybara::Cuprite::Driver.new(app, js_errors: true, window_size: [1200, 800])
 end
@@ -40,6 +39,17 @@ Capybara.javascript_driver = :cuprite
 ActiveRecord::Migration.check_all_pending!
 
 RSpec.configure do |config|
+  # Cuprite drives Chrome over localhost, which VCR/WebMock would otherwise block.
+  # Allow only localhost so unstubbed server-side calls (e.g. ESPN) still fail loudly.
+  config.around(:each, js: true) do |example|
+    VCR.turned_off do
+      WebMock.disable_net_connect!(allow_localhost: true)
+      example.run
+    ensure
+      WebMock.disable_net_connect!
+    end
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = ["#{::Rails.root}/spec/fixtures"]
 

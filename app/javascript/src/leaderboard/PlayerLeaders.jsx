@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
 
 function PlayerLeaders(props) {
   const [data, setData] = useState({ leaders: [] });
@@ -23,12 +22,12 @@ function PlayerLeaders(props) {
         })
       });
     };
-    setInterval(
-      setLeaders,
-      60 * 1000
-    );
-    setLeaders();
-  }, []);
+    const refresh = () =>
+      setLeaders().catch((error) => console.error('Leaderboard refresh failed:', error));
+    refresh();
+    const interval = setInterval(refresh, 60 * 1000);
+    return () => clearInterval(interval);
+  }, [props.leagueTournamentId]);
 
   return(
     <table className="table-minimal table-fixed w-full border-gray-300">
@@ -50,7 +49,7 @@ function PlayerLeaders(props) {
       </thead>
       <tbody>
         {data.leaders.map(leader => (
-          <tr key="{leader.id}">
+          <tr key={leader.id}>
             <td className="p-2 border-b border-gray-300">
               {leader.name}
             </td>
