@@ -62,7 +62,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 6.1'
+  gem 'rspec-rails', '~> 8.0'
   # Stage 7: pry 0.12 breaks on Ruby 3.3 (uses the removed Object#=~). Bumped to 0.14; the
   # abandoned pry-remote (2013) / pry-nav (2019) were dropped — pry-byebug is the modern
   # step-debugging replacement if wanted.
