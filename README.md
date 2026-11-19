@@ -58,7 +58,7 @@ Augusta (aka "Augusta Peaches") is a lightweight fantasy golf league and live le
 
 ### Prerequisites
 
-- Ruby 3.3.13 (see `.ruby-version`)
+- Ruby 3.3.14 (see `.ruby-version`)
 - Node 22 (see `.nvmrc`) and pnpm 12 (`npm i -g pnpm@12` or `corepack enable`)
 - PostgreSQL
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.3.13'
+ruby '3.3.14'
 
 # Rails components, not the `rails` meta-gem (keeps unused Active Storage etc.
 # out of the bundle). Bump all eight together.
