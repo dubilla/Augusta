@@ -74,7 +74,7 @@ group :test do
   gem 'cuprite'
   gem 'factory_bot', '~> 5.2'
   gem 'factory_bot_rails', '~> 5.2'
-  gem 'vcr', '~> 5.1'
+  gem 'vcr', '~> 6.0'
   gem 'webmock'
 end
 
