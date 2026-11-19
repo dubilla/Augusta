@@ -35,4 +35,21 @@ RSpec.describe "Api::V1::Rosters", type: :request do
     expect(attributes["score"]).to eq(42)
     expect(attributes["name"]).to eq(user.name)
   end
+
+  it "ranks rosters by score with rosters that have no players last" do
+    league_tournament = create(:league_tournament)
+    rosters = [3, nil, -2].map do |player_score|
+      roster = create(:roster, team: create(:team, user: create(:user)), league_tournament: league_tournament)
+      create(:roster_player, roster: roster, final_score: player_score) unless player_score.nil?
+      roster
+    end
+    allow_any_instance_of(RosterPlayer).to receive(:score) { |roster_player| roster_player.final_score }
+
+    get "/api/v1/rosters", params: { league_tournament_id: league_tournament.id }
+
+    expect(response).to have_http_status(:ok)
+    data = JSON.parse(response.body)["data"]
+    expect(data.map { |roster| roster["id"].to_i }).to eq(rosters.values_at(2, 0, 1).map(&:id))
+    expect(data.map { |roster| roster["attributes"]["score"] }).to eq([-2, 3, nil])
+  end
 end

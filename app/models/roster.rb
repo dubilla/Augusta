@@ -24,7 +24,8 @@ class Roster < ActiveRecord::Base
   end
 
   def score
-    roster_players.map{|p| p.score}.reduce(:+)
+    scores = roster_players.map(&:score)
+    scores.sum unless scores.empty?
   end
 
   def final_score
