@@ -36,4 +36,21 @@ RSpec.describe "Password reset email", type: :request do
     follow_redirect!
     expect(response.body).to match(%r{<div id="alert"[^>]*>\s*We couldn&#39;t send that email\.})
   end
+
+  it "lets a user set a new password from the emailed link and sign in with it" do
+    user = create(:user)
+    post user_password_path, params: { user: { email: user.email } }
+    token = ActionMailer::Base.deliveries.last.body.encoded[/reset_password_token=([^"&\s]+)/, 1]
+
+    put user_password_path, params: {
+      user: { reset_password_token: token, password: "new-password", password_confirmation: "new-password" }
+    }
+
+    expect(response).to have_http_status(:redirect)
+    expect(user.reload.valid_password?("new-password")).to be true
+  end
+
+  it "derives reset tokens from SECRET_KEY_BASE rather than a key committed to the repo" do
+    expect(Devise.secret_key).to eq(Rails.application.secret_key_base)
+  end
 end
